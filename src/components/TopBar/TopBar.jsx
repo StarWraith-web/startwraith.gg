@@ -37,32 +37,31 @@ export function TopBar() {
   const arrItems = useRef(items.map(createRef));
   const [active, setActive] = useState(0);
 
-  const animate = () => {
-    const menuOffset = root.current.getBoundingClientRect();
-    const activeItem = arrItems.current[active].current;
-    const { width, height, top, left } = activeItem.getBoundingClientRect();
-
-    const settings = {
-      x: left - menuOffset.x,
-      y: top - menuOffset.y,
-      width: width,
-      height: height,
-      backgroundColor: items[active].color,
-      ease: "elastic.out(.7, .7)",
-      duration: 0.8,
-    };
-
-    gsap.to(first_indicator.current, {
-      ...settings,
-    });
-
-    gsap.to(second_indicator.current, {
-      ...settings,
-      duration: 1,
-    });
-  };
-
   useEffect(() => {
+    const animate = () => {
+      const menuOffset = root.current.getBoundingClientRect();
+      const activeItem = arrItems.current[active].current;
+      const { width, height, top, left } = activeItem.getBoundingClientRect();
+
+      const settings = {
+        x: left - menuOffset.x,
+        y: top - menuOffset.y,
+        width: width,
+        height: height,
+        backgroundColor: items[active].color,
+        ease: "elastic.out(.7, .7)",
+        duration: 0.8,
+      };
+
+      gsap.to(first_indicator.current, {
+        ...settings,
+      });
+
+      gsap.to(second_indicator.current, {
+        ...settings,
+        duration: 1,
+      });
+    };
     animate();
     window.addEventListener("resize", animate);
 
