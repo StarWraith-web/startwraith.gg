@@ -9,22 +9,22 @@ const items = [
     href: "#",
   },
   {
-    name: "Home",
+    name: "Tiers",
     color: "#e91e63",
     href: "#",
   },
   {
-    name: "Home",
+    name: "Eventos",
     color: "#9c27b0",
     href: "#",
   },
   {
-    name: "Home",
+    name: "Clips",
     color: "#673ab7",
     href: "#",
   },
   {
-    name: "Home",
+    name: "Liderboard",
     color: "#3f51b5",
     href: "#",
   },

@@ -1,5 +1,4 @@
-import React from "react";
-import { SocialSection, TopBar } from "../../components";
+import { Footer, SocialSection, TopBar } from "../../components";
 
 import "./Home.scss";
 
@@ -14,7 +13,9 @@ export function Home() {
           <div className="social-section">
             <SocialSection />
           </div>
-          <div className="footer"></div>
+          <div className="footer-section">
+            <Footer />
+          </div>
         </div>
       </div>
     </div>
