@@ -24,15 +24,15 @@ export function Footer() {
 
           <ul className="nav__ul">
             <li>
-              <a href="#">link</a>
+              <a href="https://www.youtube.com/c/StarWraithYT">link</a>
             </li>
 
             <li>
-              <a href="#">link</a>
+              <a href="https://www.youtube.com/c/StarWraithYT">link</a>
             </li>
 
             <li>
-              <a href="#">link</a>
+              <a href="https://www.youtube.com/c/StarWraithYT">link</a>
             </li>
           </ul>
         </li>
@@ -42,15 +42,15 @@ export function Footer() {
 
           <ul className="nav__ul">
             <li>
-              <a href="#">Política de Privacidad</a>
+              <a href="https://www.youtube.com/c/StarWraithYT">Política de Privacidad</a>
             </li>
 
             <li>
-              <a href="#">Términos de uso</a>
+              <a href="https://www.youtube.com/c/StarWraithYT">Términos de uso</a>
             </li>
 
             <li>
-              <a href="#">Cookies</a>
+              <a href="https://www.youtube.com/c/StarWraithYT">Cookies</a>
             </li>
           </ul>
         </li>

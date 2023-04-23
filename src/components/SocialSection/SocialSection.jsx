@@ -23,7 +23,7 @@ export function SocialSection() {
       <a href="https://www.tiktok.com/@iamstarwraith" target="_blank" rel="noopener noreferrer">
         <i className="fa-brands fa-tiktok fa-4x icon-3d"></i>
       </a>
-      <a href="#" target="_blank" rel="noopener noreferrer">
+      <a href="https://discord.com/invite/wuNDqRVn" target="_blank" rel="noopener noreferrer">
         <i className="fa-brands fa-discord fa-4x icon-3d"></i>
       </a>
     </div>
