@@ -1,4 +1,4 @@
-import { ButtonGlitch, ButtonPrimary } from "../Buttons";
+import { ButtonGlitch } from "../Buttons";
 import "./Footer.scss";
 
 export function Footer() {
