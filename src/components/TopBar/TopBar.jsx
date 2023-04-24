@@ -1,32 +1,33 @@
 import { createRef, useEffect, useRef, useState } from "react";
-import "./TopBar.scss";
 import { gsap } from "gsap";
+import { Link } from "react-router-dom";
+import "./TopBar.scss";
 
 const items = [
   {
     name: "Home",
     color: "#f44336",
-    href: "#",
+    href: "/",
   },
   {
     name: "Tiers",
     color: "#e91e63",
-    href: "#",
+    href: "/tiers",
   },
   {
     name: "Eventos",
     color: "#9c27b0",
-    href: "#",
+    href: "/eventos",
   },
   {
     name: "Clips",
     color: "#673ab7",
-    href: "#",
+    href: "/clips",
   },
   {
     name: "Liderboard",
     color: "#3f51b5",
-    href: "#",
+    href: "/liderboard",
   },
 ];
 
@@ -73,17 +74,17 @@ export function TopBar() {
   return (
     <div ref={root} className="menu">
       {items.map((item, index) => (
-        <a
+        <Link
           key={item.name}
           ref={arrItems.current[index]}
           className={`item ${active === index ? "active" : ""}`}
           onMouseEnter={() => {
             setActive(index);
           }}
-          href={item.href}
+          to={item.href}
         >
           {item.name}
-        </a>
+        </Link>
       ))}
       <div ref={first_indicator} className="indicator" />
       <div ref={second_indicator} className="indicator" />

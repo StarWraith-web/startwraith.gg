@@ -1,10 +1,10 @@
-import { Home } from "./layouts";
+import { MainLayout } from "./layouts";
 
 function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <>
+      <MainLayout />
+    </>
   );
 }
 
