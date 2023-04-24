@@ -30,3 +30,29 @@ body {
   background-clip: content-box;
   background-color: #000000;
 }
+
+.center-center {
+  /* background-color: red; */
+  width: 100%;
+  margin: auto;
+  align-self: center;
+}
+
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.footer-section {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.top-bar-container{
+  width: 100%;
+  /* background-color: red; */
+}

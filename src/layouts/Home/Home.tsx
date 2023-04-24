@@ -1,4 +1,4 @@
-import { Footer, SocialSection, TopBar } from "../../components";
+import { ComingSoon, Footer, SocialSection, TopBar } from "../../components";
 
 import "./Home.scss";
 
@@ -8,14 +8,15 @@ export function Home() {
       <div className="top-bar-container">
         <TopBar />
       </div>
-      <div className="content">
-        <div className="bottom-section">
-          <div className="social-section">
-            <SocialSection />
-          </div>
-          <div className="footer-section">
-            <Footer />
-          </div>
+      <div className="main-content">
+        <ComingSoon day="30" month="6" />
+      </div>
+      <div className="bottom-section">
+        <div className="social-section">
+          <SocialSection />
+        </div>
+        <div className="footer-section">
+          <Footer />
         </div>
       </div>
     </div>

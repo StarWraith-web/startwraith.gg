@@ -1,48 +1,11 @@
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 0.2fr 1.8fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "top-bar-container top-bar-container top-bar-container"
-    "content content content"
-    "content content content";
 
-  .top-bar-container {
-    grid-area: top-bar-container;
-  }
-
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 0.9fr 1.1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      ". . ."
-      ". . ."
-      "bottom-section bottom-section bottom-section";
-    grid-area: content;
-
-    .bottom-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1.4fr 0.4fr 3.3fr;
-      gap: 0px 0px;
-      grid-template-areas:
-        "social-section social-section social-section"
-        ". . ."
-        "footer-section footer-section footer-section";
-      grid-area: bottom-section;
-
-      .social-section {
-        grid-area: social-section;
-      }
-
-      .footer-section {
-        grid-area: footer-section;
-      }
-    }
-  }
+.main-content {
+  /* position: relative; */
+  /* min-height: 100vh; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+
