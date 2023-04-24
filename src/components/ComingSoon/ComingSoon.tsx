@@ -32,13 +32,13 @@ export function ComingSoon(props) {
 
   const timerComponents: any[] = [];
 
-  Object.keys(timeLeft).forEach((interval) => {
+  Object.keys(timeLeft).forEach((interval, key) => {
     if (!timeLeft[interval]) {
       return;
     }
 
     timerComponents.push(
-      <span>
+      <span key={key}>
         {timeLeft[interval]} {interval}{" "}
       </span>
     );

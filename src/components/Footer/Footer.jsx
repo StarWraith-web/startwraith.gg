@@ -1,4 +1,4 @@
-import { ButtonPrimary } from "../Buttons";
+import { ButtonGlitch, ButtonPrimary } from "../Buttons";
 import "./Footer.scss";
 
 export function Footer() {
@@ -8,12 +8,14 @@ export function Footer() {
         <h1 className="footer__logo">Star Wraith</h1>
 
         <div className="contact">
-          <h2 className="nav__title">Contact</h2>
+          <h2 className="nav__title">Contacto</h2>
 
           <address>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             <br />
-            <ButtonPrimary title="Contactame" mail="rjbm90@gmail.com" />
+            <div className="button-wrapper-footer">
+              <ButtonGlitch text="Contactame" />
+            </div>
           </address>
         </div>
       </div>
@@ -42,11 +44,15 @@ export function Footer() {
 
           <ul className="nav__ul">
             <li>
-              <a href="https://www.youtube.com/c/StarWraithYT">Política de Privacidad</a>
+              <a href="https://www.youtube.com/c/StarWraithYT">
+                Política de Privacidad
+              </a>
             </li>
 
             <li>
-              <a href="https://www.youtube.com/c/StarWraithYT">Términos de uso</a>
+              <a href="https://www.youtube.com/c/StarWraithYT">
+                Términos de uso
+              </a>
             </li>
 
             <li>

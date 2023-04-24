@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { Clips, Eventos, Home, LiderBoard, Tiers } from "../pages";
+import { Clips, Eventos, Home, LiderBoard, PrivacyPolicy, Tiers } from "../pages";
 
 export default function Routes() {
   return (
@@ -20,6 +20,9 @@ export default function Routes() {
       </Route>
       <Route path="/liderboard">
         <LiderBoard />
+      </Route>
+      <Route path="/privacy-policy">
+        <PrivacyPolicy />
       </Route>
     </Switch>
   );
