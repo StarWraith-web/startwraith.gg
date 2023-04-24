@@ -3,11 +3,10 @@ import React, { useEffect, useState } from "react";
 import "./ComingSoon.scss";
 
 export function ComingSoon(props) {
-
-const {day, month} = props
+  const { day, month } = props;
+  const [year] = useState(new Date().getFullYear());
 
   const calculateTimeLeft = () => {
-    let year = new Date().getFullYear();
     const difference = +new Date(`${year}-${month}-${day}`) - +new Date();
     let timeLeft = {};
 
@@ -24,7 +23,6 @@ const {day, month} = props
   };
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  const [year] = useState(new Date().getFullYear());
 
   useEffect(() => {
     setTimeout(() => {
