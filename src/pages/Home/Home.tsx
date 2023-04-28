@@ -1,4 +1,4 @@
-import { AboutMe, ComingSoon, Footer, SocialSection, TopBar } from "../../components";
+import { AboutMe, Footer, SocialSection, TopBar } from "../../components";
 
 import "./Home.scss";
 
@@ -10,7 +10,6 @@ export function Home() {
       </div>
       <div className="main-content">
         <AboutMe/>
-        {/* <ComingSoon day="30" month="6" /> */}
       </div>
       <div className="bottom-section">
         <div className="social-section">
