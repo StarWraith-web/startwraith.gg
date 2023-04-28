@@ -11,7 +11,10 @@ body {
   background: $color-bg;
   color: $color-white;
   line-height: 1.7;
+  min-height: 100vh;
   background-image: url(./assets/img/bg-texture.png);
+  display: flex;
+  flex-direction: column;
 }
 
 ::-webkit-scrollbar {
@@ -45,14 +48,23 @@ body {
   height: 100%;
 }
 
-.footer-section {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+.main-content{
+  flex: 1;
 }
 
-.top-bar-container{
+.footer-section {
+  /* position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%; */
+}
+
+.top-bar-container {
   width: 100%;
   /* background-color: red; */
+}
+
+.link{
+  color: #f44336;
+  text-decoration: none;
 }
