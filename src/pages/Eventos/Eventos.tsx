@@ -1,6 +1,5 @@
-import React from "react";
 import "./Eventos.scss";
-import { ComingSoon, Footer, SocialSection, TopBar } from "../../components";
+import { ComingSoon, Footer, TopBar } from "../../components";
 
 export function Eventos() {
   return (
