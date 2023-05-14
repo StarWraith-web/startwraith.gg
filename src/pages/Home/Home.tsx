@@ -1,4 +1,10 @@
-import { AboutMe, Footer, SocialSection, TopBar } from "../../components";
+import {
+  AboutMe,
+  BrandCarousel,
+  Footer,
+  SocialSection,
+  TopBar,
+} from "../../components";
 
 import "./Home.scss";
 
@@ -9,7 +15,9 @@ export function Home() {
         <TopBar />
       </div>
       <div className="main-content">
-        <AboutMe/>
+        <AboutMe />
+        <BrandCarousel />
+        {/* <YoutubeColab /> */}
       </div>
       <div className="bottom-section">
         <div className="social-section">
@@ -22,3 +30,11 @@ export function Home() {
     </div>
   );
 }
+
+/* function YoutubeColab() {
+  return (
+    <>
+      <ButtonPlayPause/>
+    </>
+  );
+} */

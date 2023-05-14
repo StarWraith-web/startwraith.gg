@@ -4,8 +4,10 @@ import "./MainLayout.scss";
 
 export function MainLayout() {
   return (
-    <Router>
-      <Routes />
-    </Router>
+    <div style={{width: "100%"}}>
+      <Router>
+        <Routes />
+      </Router>
+    </div>
   );
 }

@@ -9,12 +9,11 @@ export function LiderBoard() {
         <TopBar />
       </div>
       <div className="main-content">
-        <ComingSoon day="30" month="6" />
+        <div style={{ padding: "50px" }} className="center-center">
+          <ComingSoon day="30" month="6" />
+        </div>
       </div>
       <div className="bottom-section">
-        <div className="social-section">
-          <SocialSection />
-        </div>
         <div className="footer-section">
           <Footer />
         </div>

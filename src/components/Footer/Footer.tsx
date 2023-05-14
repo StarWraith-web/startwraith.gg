@@ -8,11 +8,7 @@ export function Footer() {
         <h1 className="footer__logo">Star Wraith</h1>
 
         <div className="contact">
-          <h2 className="nav__title">Contacto</h2>
-
           <address>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            <br />
             <div className="button-wrapper-footer">
               <ButtonGlitch text="Contactame" />
             </div>
@@ -22,19 +18,19 @@ export function Footer() {
 
       <ul className="footer__nav">
         <li className="nav__item">
-          <h2>Title</h2>
+          <h2 className="nav__title">Merchan</h2>
 
           <ul className="nav__ul">
             <li>
-              <a href="https://www.youtube.com/c/StarWraithYT">link</a>
+              <a
+                href="https://www.amazon.es/ref=as_li_ss_tl?ie=UTF8&linkCode=sl2&tag=starwraith-21&linkId=788ac17b4767d5f2f21634fe5f196431&language=es_ES"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Amazon Afiliados</a>
             </li>
 
             <li>
-              <a href="https://www.youtube.com/c/StarWraithYT">link</a>
-            </li>
-
-            <li>
-              <a href="https://www.youtube.com/c/StarWraithYT">link</a>
+              <a href="https://teamheretics.com/21-store" rel="noopener noreferrer">Teamheretics Store</a>
             </li>
           </ul>
         </li>

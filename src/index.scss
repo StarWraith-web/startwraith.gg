@@ -5,12 +5,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+html{
+  width: 100% !important;
+}
 
 body {
   font-family: "Poppins", sans-serif;
   background: $color-bg;
   color: $color-white;
-  line-height: 1.7;
+  /* line-height: 1.7; */
   min-height: 100vh;
   background-image: url(./assets/img/bg-texture.png);
   display: flex;
@@ -37,8 +40,9 @@ body {
 .center-center {
   /* background-color: red; */
   width: 100%;
-  margin: auto;
-  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {

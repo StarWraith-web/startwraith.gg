@@ -1,9 +1,9 @@
 @import "../../scss/index.scss";
 
 .flex-center {
- /*  background-color: black; */
-  /* width: 100%; */
+  /*  background-color: black; */
   /* min-height: 50vh; */
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -19,7 +19,7 @@
 }
 
 .icon-3d {
-  padding: 50px;
+  padding: 40px;
   -webkit-animation: icon3d 200ms 10;
   animation: icon3d 200ms 10;
   color: #fff;
@@ -45,5 +45,20 @@
   }
   100% {
     text-shadow: -5px 0 $redColor, 5px -4px $blueColor;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .flex-center {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+
+    a {
+      flex: 50%;
+    }
   }
 }

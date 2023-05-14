@@ -32,7 +32,7 @@ const items = [
 ];
 
 export function TopBar() {
-  const root = useRef();
+  const root = useRef<HTMLInputElement>();
   const first_indicator = useRef();
   const second_indicator = useRef();
   const arrItems = useRef(items.map(createRef));
@@ -41,9 +41,8 @@ export function TopBar() {
   useEffect(() => {
     const animate = () => {
       const menuOffset = root.current.getBoundingClientRect();
-      const activeItem = arrItems.current[active].current;
+      const activeItem: any = arrItems.current[active].current;
       const { width, height, top, left } = activeItem.getBoundingClientRect();
-
       const settings = {
         x: left - menuOffset.x,
         y: top - menuOffset.y,
