@@ -33,7 +33,7 @@ const items = [
 ];
 
 export function TopBar() {
-  const root = useRef<HTMLInputElement>();
+  const root = useRef();
   const first_indicator = useRef();
   const second_indicator = useRef();
   const arrItems = useRef(items.map(createRef));
@@ -42,7 +42,7 @@ export function TopBar() {
   useEffect(() => {
     const animate = () => {
       const menuOffset = root.current?.getBoundingClientRect();
-      const activeItem: any = arrItems.current[active].current;
+      const activeItem = arrItems.current[active].current;
       const { width, height, top, left } = activeItem.getBoundingClientRect();
       const settings = {
         x: left - menuOffset.x,
@@ -77,7 +77,7 @@ export function TopBar() {
       {items.map((item, index) => (
         <Link
           key={item.name}
-          ref={arrItems.current[index] as React.RefObject<HTMLAnchorElement>}
+          ref={arrItems.current[index]}
           className={`item ${active === index ? "active" : ""}`}
           onMouseEnter={() => {
             setActive(index);

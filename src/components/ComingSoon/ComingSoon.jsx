@@ -30,7 +30,7 @@ export function ComingSoon(props) {
     }, 1000);
   });
 
-  const timerComponents: any[] = [];
+  const timerComponents = [];
 
   Object.keys(timeLeft).forEach((interval, key) => {
     if (!timeLeft[interval]) {

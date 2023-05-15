@@ -5,12 +5,23 @@
   padding: 0;
   box-sizing: border-box;
 }
-html{
-  width: 100% !important;
+
+html,
+body,
+#root,
+.app,
+.content {
+  height: 100%;
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.app {
+  display: flex;
+  position: relative;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
   background: $color-bg;
   color: $color-white;
   /* line-height: 1.7; */
