@@ -14,6 +14,7 @@ body,
   height: 100%;
   width: 100%;
   font-family: "Source Sans Pro", sans-serif;
+  background-image: none !important;
 }
 
 .app {
@@ -26,7 +27,7 @@ body {
   color: $color-white;
   /* line-height: 1.7; */
   min-height: 100vh;
-  background-image: url(./assets/img/bg-texture.png);
+  
   display: flex;
   flex-direction: column;
 }
