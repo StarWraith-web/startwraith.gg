@@ -4,7 +4,6 @@ import {
   Footer,
   SocialSection,
   TopBar,
-  ButtonPlayPause
 } from "../../components";
 
 
@@ -19,7 +18,7 @@ export function Home() {
       <div className="main-content">
         <AboutMe />
         <BrandCarousel />
-        <YoutubeColab />
+        {/* <ButtonPlayPause /> */}
       </div>
       <div className="bottom-section">
         <div className="social-section">
@@ -33,10 +32,4 @@ export function Home() {
   );
 }
 
-function YoutubeColab() {
-  return (
-    <>
-      <ButtonPlayPause/>
-    </>
-  );
-}
+
