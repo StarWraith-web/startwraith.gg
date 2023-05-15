@@ -1,4 +1,5 @@
 import { createRef, useEffect, useRef, useState } from "react";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { gsap } from "gsap";
 import { Link } from "react-router-dom";
 import "./TopBar.scss";
@@ -40,7 +41,7 @@ export function TopBar() {
 
   useEffect(() => {
     const animate = () => {
-      const menuOffset = root.current.getBoundingClientRect();
+      const menuOffset = root.current?.getBoundingClientRect();
       const activeItem: any = arrItems.current[active].current;
       const { width, height, top, left } = activeItem.getBoundingClientRect();
       const settings = {
@@ -72,10 +73,11 @@ export function TopBar() {
 
   return (
     <div ref={root} className="menu">
+      
       {items.map((item, index) => (
         <Link
           key={item.name}
-          ref={arrItems.current[index]}
+          ref={arrItems.current[index] as React.RefObject<HTMLAnchorElement>}
           className={`item ${active === index ? "active" : ""}`}
           onMouseEnter={() => {
             setActive(index);
@@ -87,6 +89,12 @@ export function TopBar() {
       ))}
       <div ref={first_indicator} className="indicator" />
       <div ref={second_indicator} className="indicator" />
+
+      <Link to="/login" className="center" style={{color: "white"}}>
+        
+        <AccountCircleIcon />
+      </Link>    
+
     </div>
   );
 }
