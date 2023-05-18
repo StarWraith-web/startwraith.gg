@@ -2,11 +2,9 @@ import { useState } from "react";
 import { ColorModeContext, useMode } from "../../theme/theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 
-import { Calendar, SideBar } from "../../components/Dashboard";
+import { SideBar } from "../../components/Dashboard";
 import { TopBarDashboard } from "../../components";
-import { Outlet, Route, Routes } from "react-router-dom";
-import { Dashboard } from "../../pages";
-import { ProtectedLayout } from "../ProtectedLayout";
+import { Outlet } from "react-router-dom";
 
 export function DashboardLayout() {
   const [theme, colorMode] = useMode();

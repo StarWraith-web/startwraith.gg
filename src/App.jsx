@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { DashboardLayout, MainLayout, ProtectedLayout } from "./layouts";
 import { AuthProvider } from "./context/AuthProvider";
 import {
@@ -8,7 +8,6 @@ import {
   LiderBoard,
   PrivacyPolicy,
   Tiers,
-  Dashboard,
   Login,
 } from "./pages";
 import { Calendar } from "./components";
