@@ -2,11 +2,13 @@ import { useState } from "react";
 import { ColorModeContext, useMode } from "../../theme/theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 
-import "./Dashboard.scss";
-import SideBar from "../../components/SideBar/SideBar";
+import { Calendar, SideBar } from "../../components/Dashboard";
 import { TopBarDashboard } from "../../components";
+import { Outlet, Route, Routes } from "react-router-dom";
+import { Dashboard } from "../../pages";
+import { ProtectedLayout } from "../ProtectedLayout";
 
-export function Dashboard() {
+export function DashboardLayout() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
 
@@ -18,6 +20,7 @@ export function Dashboard() {
           <SideBar isSidebar={isSidebar} />
           <main className="content">
             <TopBarDashboard setIsSidebar={setIsSidebar} />
+            <Outlet />
           </main>
         </div>
       </ThemeProvider>

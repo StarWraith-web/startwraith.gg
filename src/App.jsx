@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { MainLayout, ProtectedLayout } from "./layouts";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { DashboardLayout, MainLayout, ProtectedLayout } from "./layouts";
 import { AuthProvider } from "./context/AuthProvider";
 import {
   Clips,
@@ -9,8 +9,9 @@ import {
   PrivacyPolicy,
   Tiers,
   Dashboard,
-  Login
+  Login,
 } from "./pages";
+import { Calendar } from "./components";
 
 function App() {
   return (
@@ -29,7 +30,9 @@ function App() {
             </Route>
 
             <Route path="/dashboard" element={<ProtectedLayout />}>
-              <Route index element={<Dashboard />} />
+              <Route path="/dashboard/" element={<DashboardLayout />}>
+                <Route path="/dashboard/calendario" element={<Calendar />} />
+              </Route>
             </Route>
           </Routes>
         </AuthProvider>

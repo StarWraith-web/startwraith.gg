@@ -1,12 +1,9 @@
 import { useState } from "react";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import {
-  Menu,
-  MenuItem,
-  ProSidebar
-} from "react-pro-sidebar";
+import { Menu, MenuItem, ProSidebar } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
-import { tokens } from "../../theme/theme";
+import { tokens } from "../../../theme/theme";
+import img from "../../../assets/img/img.jpg"
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
@@ -19,6 +16,7 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import useAuth from "../../../hooks/useAuth";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -38,11 +36,13 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
-export default function SideBar() {
+export function SideBar() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+
+  const { auth } = useAuth();
 
   return (
     <Box
@@ -83,7 +83,7 @@ export default function SideBar() {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINS
+                  ADMIN PANEL
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -99,7 +99,7 @@ export default function SideBar() {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../assets/user.png`}
+                  src={img}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
@@ -110,7 +110,7 @@ export default function SideBar() {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  username here
+                  {auth.name}
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
                   descr
@@ -122,7 +122,7 @@ export default function SideBar() {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
-              to="/"
+              to="/dashboard"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -137,14 +137,14 @@ export default function SideBar() {
             </Typography>
             <Item
               title="Manage Team"
-              to="/team"
+              to="/dashboard"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Contacts Information"
-              to="/contacts"
+              to="/dashboard"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -158,21 +158,21 @@ export default function SideBar() {
             </Typography>
             <Item
               title="Profile Form"
-              to="/form"
+              to="/dashboard"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Calendar"
-              to="/calendar"
+              title="Calendario"
+              to="/dashboard/calendario"
               icon={<CalendarTodayOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="FAQ Page"
-              to="/faq"
+              to="/dashboard"
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -183,32 +183,32 @@ export default function SideBar() {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Charts
+              Actividad
             </Typography>
             <Item
-              title="Bar Chart"
-              to="/bar"
+              title="Gráfica de barras"
+              to="/dashboard"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Pie Chart"
-              to="/pie"
+              title="Gráfica de donut"
+              to="/dashboard"
               icon={<PieChartOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Line Chart"
-              to="/line"
+              title="Gráfica de líneas"
+              to="/dashboard"
               icon={<TimelineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Geography Chart"
-              to="/geography"
+              title="Gráfica geográfica"
+              to="/dashboard"
               icon={<MapOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

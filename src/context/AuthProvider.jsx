@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
         );
         setAuth(data);
         navigate("/dashboard");
-        console.log(data);
+        console.log("data: ",data);
       } catch (error) {
         setAuth({});
         console.log(error);
@@ -44,8 +44,12 @@ const AuthProvider = ({ children }) => {
     authUser();
   }, []);
 
+  const closeSession = () => {
+    setAuth({});
+  };
+
   return (
-    <AuthContext.Provider value={{ auth, setAuth, loading }}>
+    <AuthContext.Provider value={{ auth, setAuth, loading, closeSession }}>
       {children}
     </AuthContext.Provider>
   );

@@ -5,5 +5,4 @@ export * from "./Buttons";
 export * from "./ComingSoon";
 export * from "./AboutMe";
 export * from "./BrandCarousel";
-export * from "./SideBar";
-export * from "./TopBarDashboard"
+export * from "./Dashboard"
