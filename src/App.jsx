@@ -22,7 +22,9 @@ function App() {
               <Route index element={<Home />} />
               <Route path="tiers" element={<Tiers />} />
               <Route path="eventos" element={<Eventos />} />
-              <Route path="clips" element={<Clips />} />
+              <Route path="clips" element={<Clips />}>
+                <Route path="upload-clip/:id" element={<Clips />}/>
+              </Route>
               <Route path="liderboard" element={<LiderBoard />} />
               <Route path="privacy-policy" element={<PrivacyPolicy />} />
               <Route path="login" element={<Login />} />

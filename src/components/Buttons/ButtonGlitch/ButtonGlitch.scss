@@ -1,8 +1,5 @@
 @import "../../../scss/index.scss";
 
-$color_1: #fff;
-$font-family_1: "Pacifico", cursive;
-
 @-moz-keyframes glitch {
   0% {
     clip-path: var(--slice-1);
@@ -192,10 +189,11 @@ $font-family_1: "Pacifico", cursive;
   width: 220px;
   height: 60px;
   font-size: 20px;
-  font-family: $font-family_1;
+  font-family: $time-new-roman;
   background: linear-gradient(45deg, transparent 5%, #f44336 5%);
   border: 0;
-  color: $color_1;
+  cursor: pointer;
+  color: #fff;
   letter-spacing: 3px;
   line-height: 60px;
   box-shadow: 6px 0 0 #00e6f6;
@@ -205,10 +203,10 @@ $font-family_1: "Pacifico", cursive;
     width: 220px;
     height: 60px;
     font-size: 20px;
-    font-family: $font-family_1;
+    font-family: $time-new-roman;
     background: linear-gradient(45deg, transparent 5%, #f44336 5%);
     border: 0;
-    color: $color_1;
+    color: #fff;
     letter-spacing: 3px;
     line-height: 60px;
     box-shadow: 6px 0 0 #00e6f6;

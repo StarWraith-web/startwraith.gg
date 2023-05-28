@@ -10,7 +10,9 @@ export function Footer() {
         <div className="contact">
           <address>
             <div className="button-wrapper-footer">
-              <ButtonGlitch text="Contactame" />
+              <a href="mailto:rjbm90@gmail.com" >
+                <ButtonGlitch text="Contactame"/>
+              </a>            
             </div>
           </address>
         </div>

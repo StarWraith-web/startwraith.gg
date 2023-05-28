@@ -6,7 +6,6 @@ export function ProtectedLayout() {
   if (loading) {
     return <p>cargando...</p>;
   }
-  console.log(auth);
   return <>{auth._id ? <Outlet /> : <Navigate to="/" />}</>;
 }
 

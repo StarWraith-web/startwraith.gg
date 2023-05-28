@@ -33,7 +33,6 @@ const AuthProvider = ({ children }) => {
         );
         setAuth(data);
         navigate("/dashboard");
-        console.log("data: ",data);
       } catch (error) {
         setAuth({});
         console.log(error);

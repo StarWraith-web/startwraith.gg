@@ -1,10 +1,7 @@
-$color_1: #2f2f2f;
-$color_2: #999;
-$font-family_1: "Pacifico", cursive;
-$background-color_1: #fff;
-$background-color_2: rgb(33, 33, 33, 0.07);
+@import "../../scss/index.scss";
 
 .footer {
+  font-family: $time-new-roman;
   box-shadow: 0 0 25px #ddd;
   background: #fff;
   width: 100%;
@@ -12,15 +9,15 @@ $background-color_2: rgb(33, 33, 33, 0.07);
   display: flex;
   flex-flow: row wrap;
   padding: 30px 30px 20px 30px;
-  color: $color_1;
-  background-color: $background-color_1;
+  color: #2f2f2f;
+  background-color: #fff;
   border-top: 1px solid #e5e5e5;
   > * {
     flex: 1 100%;
   }
   address {
     font-style: normal;
-    color: $color_2;
+    color: #999;
   }
   ul {
     list-style: none;
@@ -38,7 +35,7 @@ $background-color_2: rgb(33, 33, 33, 0.07);
     padding: 2rem;
   }
 
-  .button-wrapper-footer{
+  .button-wrapper-footer {
     padding: 1rem;
   }
 }
@@ -52,7 +49,6 @@ $background-color_2: rgb(33, 33, 33, 0.07);
   }
 }
 .footer__logo {
-  font-family: $font-family_1;
   font-weight: 600 bold;
   font-size: 1.5rem;
   letter-spacing: 1px;
@@ -68,9 +64,9 @@ $background-color_2: rgb(33, 33, 33, 0.07);
   justify-content: center;
   height: 36px;
   max-width: max-content;
-  background-color: $background-color_2;
+  background-color: rgb(33, 33, 33, 0.07);
   border-radius: 100px;
-  color: $color_1;
+  color: #2f2f2f;
   line-height: 0;
   margin: 0.6em 0;
   font-size: 1rem;
@@ -86,7 +82,7 @@ $background-color_2: rgb(33, 33, 33, 0.07);
 }
 .nav__ul {
   a {
-    color: $color_2;
+    color: #999;
   }
 }
 .nav__ul--extra {
@@ -96,7 +92,7 @@ $background-color_2: rgb(33, 33, 33, 0.07);
 .legal {
   display: flex;
   flex-wrap: wrap;
-  color: $color_2;
+  color: #999;
   align-items: center;
   justify-content: center;
 }
@@ -105,7 +101,7 @@ $background-color_2: rgb(33, 33, 33, 0.07);
   align-items: center;
 }
 .heart {
-  color: $color_1;
+  color: #2f2f2f;
 }
 .contact {
   display: flex;
@@ -144,5 +140,3 @@ $background-color_2: rgb(33, 33, 33, 0.07);
     flex: 1 0px;
   }
 }
-
-
