@@ -8,7 +8,7 @@ import img from "../../../assets/img/img.jpg"
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
@@ -133,17 +133,17 @@ export function SideBar() {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Data
+              Gestion
             </Typography>
             <Item
-              title="Manage Team"
+              title="Usuarios baneados"
               to="/dashboard"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Contacts Information"
+              title="Base de datos"
               to="/dashboard"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
@@ -154,12 +154,12 @@ export function SideBar() {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Pages
+              Páginas
             </Typography>
             <Item
-              title="Profile Form"
-              to="/dashboard"
-              icon={<PersonOutlinedIcon />}
+              title="Clips"
+              to="/dashboard/clips"
+              icon={<LiveTvOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -172,7 +172,7 @@ export function SideBar() {
             />
             <Item
               title="FAQ Page"
-              to="/dashboard"
+              to="/dashboard/faq"
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -187,28 +187,28 @@ export function SideBar() {
             </Typography>
             <Item
               title="Gráfica de barras"
-              to="/dashboard"
+              to="/dashboard/grafica-barras"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Gráfica de donut"
-              to="/dashboard"
+              to="/dashboard/grafica-donut"
               icon={<PieChartOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Gráfica de líneas"
-              to="/dashboard"
+              to="/dashboard/grafica-lineal"
               icon={<TimelineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Gráfica geográfica"
-              to="/dashboard"
+              to="/dashboard/grafica-geografica"
               icon={<MapOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

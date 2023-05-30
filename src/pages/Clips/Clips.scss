@@ -1,39 +1,71 @@
 @import "../../scss/index.scss";
 
-.container-box-clip {
-  font-family: $time-new-roman;
-  margin: auto;
-  width: 30%;
-  height: 400px;
-  background: #050507;
-  box-shadow: 0px -25px 20px -20px rgba(0, 0, 0, 0.45),
-    25px 0 20px -20px rgba(0, 0, 0, 0.45),
-    0px 25px 20px -20px rgba(0, 0, 0, 0.45),
-    -25px 0 20px -20px rgba(0, 0, 0, 0.45);
-  padding: 20px;
-
-  &__title {
-    text-align: center;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  &__content {
-    font-size: $default-size;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 70%;
-    text-align: center;
-    letter-spacing: 1px;
-  }
-
-  &__button {
+.container-uploadclip {
+  width: 100%;
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 1.5fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "upload-clip-area upload-clip-area upload-clip-content-area"
+    "upload-clip-area upload-clip-area upload-clip-content-area"
+    "upload-clip-area upload-clip-area upload-clip-content-area";
+  .upload-clip-area {
     width: 100%;
-    padding: 10px;
+    height: 100%;
+    grid-area: upload-clip-area;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: auto;
+
+    .container-box-clip {
+      font-family: $time-new-roman;
+      margin: auto;
+      height: 400px;
+      background: #050507;
+      box-shadow: 0px -25px 20px -20px rgba(0, 0, 0, 0.45),
+        25px 0 20px -20px rgba(0, 0, 0, 0.45),
+        0px 25px 20px -20px rgba(0, 0, 0, 0.45),
+        -25px 0 20px -20px rgba(0, 0, 0, 0.45);
+      padding: 20px;
+
+      &__title {
+        text-align: center;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      &__content {
+        font-size: $default-size;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 70%;
+        text-align: center;
+        letter-spacing: 1px;
+      }
+
+      &__button {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+      }
+    }
+  }
+
+  .upload-clip-content-area {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    grid-area: upload-clip-content-area;
+
+    p{
+      margin: 10px;
+    }
   }
 }

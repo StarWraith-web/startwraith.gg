@@ -10,7 +10,15 @@ import {
   Tiers,
   Login,
 } from "./pages";
-import { Calendar } from "./components";
+import {
+  Barras,
+  Calendar,
+  Donut,
+  Geografica,
+  Lineal,
+  ClipsShow,
+  Faq,
+} from "./components";
 
 function App() {
   return (
@@ -23,16 +31,25 @@ function App() {
               <Route path="tiers" element={<Tiers />} />
               <Route path="eventos" element={<Eventos />} />
               <Route path="clips" element={<Clips />}>
-                <Route path="upload-clip/:id" element={<Clips />}/>
+                <Route path="upload-clip/:id" element={<Clips />} />
               </Route>
               <Route path="liderboard" element={<LiderBoard />} />
-              <Route path="privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="politica-privacidad" element={<PrivacyPolicy />} />
               <Route path="login" element={<Login />} />
             </Route>
 
             <Route path="/dashboard" element={<ProtectedLayout />}>
               <Route path="/dashboard/" element={<DashboardLayout />}>
                 <Route path="/dashboard/calendario" element={<Calendar />} />
+                <Route path="/dashboard/grafica-barras" element={<Barras />} />
+                <Route path="/dashboard/grafica-lineal" element={<Lineal />} />
+                <Route path="/dashboard/grafica-donut" element={<Donut />} />
+                <Route path="/dashboard/clips" element={<ClipsShow />} />
+                <Route path="/dashboard/faq" element={<Faq />} />
+                <Route
+                  path="/dashboard/grafica-geografica"
+                  element={<Geografica />}
+                />
               </Route>
             </Route>
           </Routes>

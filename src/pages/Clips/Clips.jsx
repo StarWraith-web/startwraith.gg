@@ -4,9 +4,12 @@ import "./Clips.scss";
 import { useEffect, useState } from "react";
 import { ButtonGlitch, Footer, TopBar } from "../../components";
 import { useLocation, useNavigate } from "react-router-dom";
-import { TextGlitchUnderlined } from "../../components/Animations/TextAnimations/TextGlitchUnderlined/TextGlitchUnderlined";
 import axios from "axios";
 import { generateID } from "../../utils/functions";
+import {
+  TextGlitchRandomized,
+  TextGlitchUnderlined,
+} from "../../components/Animations";
 
 export function Clips() {
   const redirect = "http://localhost:3000/clips";
@@ -62,24 +65,37 @@ export function Clips() {
           {clipId ? (
             <p>section para subir clip here</p>
           ) : (
-            <div className="container-box-clip">
-              <div className="container-box-clip__title">
-                <TextGlitchUnderlined text="Subir mi clip" />
+            <div className="container-uploadclip">
+              <div className="upload-clip-area">
+                <div className="container-box-clip">
+                  <div className="container-box-clip__title">
+                    <TextGlitchUnderlined text="Subir mi clip" />
+                  </div>
+                  <div className="container-box-clip__content">
+                    <p>
+                      ¿Eres sub? ¡Comparte tu clip y podré reaccionar a él en mi
+                      canal de twitch!
+                    </p>
+                  </div>
+                  <div className="container-box-clip__button">
+                    <a
+                      href={`https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=yefcdrm50w8r7hdfcq4fpphkpdqqph&redirect_uri=${encodeURIComponent(
+                        redirect
+                      )}&scope=user%3Aread%3Asubscriptions`}
+                    >
+                      <ButtonGlitch text="Subir mi clip" />
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="container-box-clip__content">
+              <div className="upload-clip-content-area">
+                <TextGlitchRandomized text="¿Eres sub? Comparte tu clip" />
                 <p>
-                  ¿Eres sub? ¡Comparte tu clip y podré reaccionar a él en mi
-                  canal de youtube!
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
+                  sapiente ad quasi veritatis nobis, et vitae, sunt repudiandae
+                  aut numquam modi commodi, cumque odit? Expedita numquam animi
+                  aperiam aliquid dolore.
                 </p>
-              </div>
-              <div className="container-box-clip__button">
-                <a
-                  href={`https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=yefcdrm50w8r7hdfcq4fpphkpdqqph&redirect_uri=${encodeURIComponent(
-                    redirect
-                  )}&scope=user%3Aread%3Asubscriptions`}
-                >
-                  <ButtonGlitch text="Subir mi clip" />
-                </a>
               </div>
             </div>
           )}

@@ -48,7 +48,7 @@ export function Calendar() {
 
   return (
     <Box m="20px">
-      <Header title="Calendario" />
+      <Header title="Calendario" subtitle="Página de calendario y eventos"/>
 
       <Box display="flex" justifyContent="space-between">
         {/* CALENDAR SIDEBAR */}
