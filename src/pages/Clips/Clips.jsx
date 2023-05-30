@@ -12,7 +12,7 @@ import {
 } from "../../components/Animations";
 
 export function Clips() {
-  const redirect = "http://localhost:3000/clips";
+  const redirect = "https://starwraith.netlify.app/clips";
   const id = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
@@ -32,7 +32,7 @@ export function Clips() {
         client_secret: "lrdfwhnetno40mivgbsz1ynoredqt4",
         grant_type: "authorization_code",
         code: code,
-        redirect_uri: "http://localhost:3000/clips",
+        redirect_uri: redirect,
       };
 
       await axios
