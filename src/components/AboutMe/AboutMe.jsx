@@ -1,5 +1,5 @@
 import "./AboutMe.scss";
-import ImgAbout from "../../assets/img/img.jpg";
+import ImgAbout from "../../assets/img/img-home.jpg";
 
 export function AboutMe() {
   return (
