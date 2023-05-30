@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Menu, MenuItem, ProSidebar } from "react-pro-sidebar";
@@ -7,7 +8,6 @@ import img from "../../../assets/img/img.jpg"
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
@@ -16,6 +16,7 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import StorageOutlinedIcon from '@mui/icons-material/StorageOutlined';
 import useAuth from "../../../hooks/useAuth";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -68,7 +69,6 @@ export function SideBar() {
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
-            onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
@@ -78,16 +78,13 @@ export function SideBar() {
             {!isCollapsed && (
               <Box
                 display="flex"
-                justifyContent="space-between"
+                justifyContent="center"
                 alignItems="center"
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
                   ADMIN PANEL
                 </Typography>
-                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
-                  <MenuOutlinedIcon />
-                </IconButton>
               </Box>
             )}
           </MenuItem>
@@ -97,8 +94,8 @@ export function SideBar() {
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
                   alt="profile-user"
-                  width="100px"
-                  height="100px"
+                  width="145px"
+                  height="135px"
                   src={img}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
@@ -113,7 +110,7 @@ export function SideBar() {
                   {auth.name}
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  descr
+                  Streamer
                 </Typography>
               </Box>
             </Box>
@@ -145,7 +142,7 @@ export function SideBar() {
             <Item
               title="Base de datos"
               to="/dashboard"
-              icon={<ContactsOutlinedIcon />}
+              icon={<StorageOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />

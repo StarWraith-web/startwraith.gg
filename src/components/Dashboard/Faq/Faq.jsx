@@ -17,7 +17,7 @@ export function Faq() {
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            An Important Question
+            Pregunta
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -30,7 +30,7 @@ export function Faq() {
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            Another Important Question
+            Pregunta
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -43,7 +43,7 @@ export function Faq() {
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            Your Favorite Question
+            Pregunta
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -56,7 +56,7 @@ export function Faq() {
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            Some Random Question
+            Pregunta
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -69,7 +69,7 @@ export function Faq() {
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            The Final Question
+            Pregunta
           </Typography>
         </AccordionSummary>
         <AccordionDetails>

@@ -13,7 +13,6 @@ body,
 .content {
   height: 100%;
   width: 100%;
-  font-family: "Source Sans Pro", sans-serif;
   background-image: none !important;
 }
 
@@ -25,9 +24,7 @@ body,
 body {
   background: $color-bg;
   color: $color-white;
-  /* line-height: 1.7; */
   min-height: 100vh;
-  
   display: flex;
   flex-direction: column;
 }
