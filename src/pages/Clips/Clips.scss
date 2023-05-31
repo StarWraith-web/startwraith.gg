@@ -1,5 +1,82 @@
 @import "../../scss/index.scss";
 
+.upload-clip {
+  display: grid;
+  height: 90vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "are-upload-clip are-upload-clip area-help"
+    "are-upload-clip are-upload-clip area-help"
+    "are-upload-clip are-upload-clip area-help";
+  width: 100%;
+  margin: auto;
+
+  .are-upload-clip {
+    grid-area: are-upload-clip;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .box-upload {
+      width: 100%;
+      margin: auto;
+      background: #050507;
+      padding: 20px;
+
+      &__title {
+        letter-spacing: 3px;
+        padding: 20px;
+        font-size: $title-size;
+      }
+
+      &__content {
+        padding: 20px;
+
+        form {
+          .form-group {
+            padding: 10px;
+            margin-bottom: 10px;
+          }
+        }
+      }
+
+      &__buttons {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+      }
+    }
+  }
+
+  .area-help {
+    grid-area: area-help;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+    &__title {
+      text-align: center;
+      font-size: $title-size;
+    }
+
+    &__content {
+      p {
+        text-align: center;
+        font-size: $default-size;
+        letter-spacing: 2px;
+      }
+    }
+  }
+}
+
 .container-uploadclip {
   width: 100%;
   height: 90vh;
@@ -25,16 +102,12 @@
       margin: auto;
       height: 400px;
       background: #050507;
-      box-shadow: 0px -25px 20px -20px rgba(0, 0, 0, 0.45),
-        25px 0 20px -20px rgba(0, 0, 0, 0.45),
-        0px 25px 20px -20px rgba(0, 0, 0, 0.45),
-        -25px 0 20px -20px rgba(0, 0, 0, 0.45);
       padding: 20px;
 
       &__title {
         text-align: center;
         letter-spacing: 2px;
-        text-transform: uppercase;
+        font-size: $title-size;
       }
 
       &__content {
@@ -42,7 +115,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 70%;
+        height: 60%;
         text-align: center;
         letter-spacing: 1px;
       }
@@ -64,8 +137,16 @@
     padding: 10px;
     grid-area: upload-clip-content-area;
 
-    p{
-      margin: 10px;
+    &__title {
+      font-size: $title-size;
+    }
+
+    &__content {
+      p {
+        margin: 10px;
+        font-size: $default-size;
+        letter-spacing: 2px;
+      }
     }
   }
 }

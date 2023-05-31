@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -5,16 +6,15 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
 import "./Login.scss";
+import { toast } from "react-toastify";
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { auth, setAuth, loading } = useAuth();
 
-  const navigate = useNavigate()
-  console.log(loading);
-  console.log(auth);
-
+  const navigate = useNavigate();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -33,9 +33,10 @@ export function Login() {
       );
       localStorage.setItem("token", data.token);
       setAuth(data);
-      navigate("/dashboard")
+      navigate("/dashboard");
     } catch (error) {
-      console.log(error.response);
+      const { data } = error.response;
+      toast.error(data.msg);
     }
   };
 

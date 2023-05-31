@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { DashboardLayout, MainLayout, ProtectedLayout } from "./layouts";
 import { AuthProvider } from "./context/AuthProvider";
 import {
@@ -55,6 +56,18 @@ function App() {
           </Routes>
         </AuthProvider>
       </BrowserRouter>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </>
   );
 }

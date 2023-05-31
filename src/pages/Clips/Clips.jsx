@@ -10,9 +10,10 @@ import {
   TextGlitchRandomized,
   TextGlitchUnderlined,
 } from "../../components/Animations";
+import { InputText } from "../../components/InputText";
 
 export function Clips() {
-  const redirect = "https://starwraith.netlify.app/clips";
+  const redirect = "http://localhost:3000/clips";
   const id = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
@@ -63,13 +64,45 @@ export function Clips() {
       <div className="main-content">
         <div style={{ padding: "50px" }} className="center-center">
           {clipId ? (
-            <p>section para subir clip here</p>
+            <>
+              <div class="upload-clip">
+                <div class="are-upload-clip">
+                  <div className="box-upload">
+                    <div className="box-upload__title">
+                      <TextGlitchRandomized text="Subir clip" />
+                    </div>
+                    <div className="box-upload__content">
+                      <form>
+                        <div className="form-group">
+                          <InputText
+                            type="text"
+                            name="title"
+                            placeholder="Título"
+                          />
+                        </div>
+                        <div className="form-group">
+                          <InputText type="text" name="url" placeholder="Url" />
+                        </div>
+                      </form>
+                    </div>
+                    <div className="box-upload__buttons">
+                      <ButtonGlitch text="Subir mi clip" />
+                    </div>
+                  </div>
+                </div>
+                <div class="area-help">
+                  <div class="area-help__title">
+                    <TextGlitchRandomized text="¿Tienes problemas al subir tu clip?" />
+                  </div>
+                </div>
+              </div>
+            </>
           ) : (
             <div className="container-uploadclip">
               <div className="upload-clip-area">
                 <div className="container-box-clip">
                   <div className="container-box-clip__title">
-                    <TextGlitchUnderlined text="Subir mi clip" />
+                    <TextGlitchRandomized text="Subir mi clip" />
                   </div>
                   <div className="container-box-clip__content">
                     <p>
@@ -89,13 +122,18 @@ export function Clips() {
                 </div>
               </div>
               <div className="upload-clip-content-area">
-                <TextGlitchRandomized text="¿Eres sub? Comparte tu clip" />
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
-                  sapiente ad quasi veritatis nobis, et vitae, sunt repudiandae
-                  aut numquam modi commodi, cumque odit? Expedita numquam animi
-                  aperiam aliquid dolore.
-                </p>
+                <div className="upload-clip-content-area__title">
+                  <TextGlitchRandomized text="¿Eres sub? Comparte tu clip" />
+                </div>
+                <div className="upload-clip-content-area__content">
+                  <p>
+                    ¿Te has marcado la jugada de tu vida y quieres compartirlo
+                    con nosotros, o tal vez te has marcado la vomitada de tu
+                    vida y quieres que los demás la veamos?. Sea cual sea el
+                    caso, no lo dudes y <b>sube tu clip</b> para que lo veamos
+                    en directo los <b>domingos por la tarde</b>.
+                  </p>
+                </div>
               </div>
             </div>
           )}
