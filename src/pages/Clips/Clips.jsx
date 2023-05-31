@@ -13,7 +13,7 @@ import {
 import { InputText } from "../../components/InputText";
 
 export function Clips() {
-  const redirect = "http://localhost:3000/clips";
+  const redirect = "https://starwraith.netlify.app/clips";
   const id = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
