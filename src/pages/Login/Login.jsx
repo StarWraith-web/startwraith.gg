@@ -19,7 +19,7 @@ export function Login() {
     e.preventDefault();
 
     if ([email, password].includes("")) {
-      console.log("campos obligatorios");
+      toast.error("Todos los campos son obligatorios")
       return;
     }
 

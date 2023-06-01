@@ -13,20 +13,41 @@ import {
 import { InputText } from "../../components/InputText";
 
 export function Clips() {
-  const redirect = "https://starwraith.netlify.app/clips";
+  const redirect = "http://localhost:3000/clips";
   const id = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [clipId, setClipId] = useState(null);
+  const [userName, setUserName] = useState("");
+  const [token, setToken] = useState("");
   const code = new URLSearchParams(search).get("code");
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    const getUserInfo = async () => {
+      const config = {
+        headers: {
+          "Client-Id": "yefcdrm50w8r7hdfcq4fpphkpdqqph",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      await axios
+        .get("https://api.twitch.tv/helix/users", config)
+        .then((resp) => {
+          const { login } = resp.data.data[0];
+          setUserName(login);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
     const retrieveAccessToken = async () => {
-      const headers = {
-        "Content-Type": "application/x-www-form-urlencoded",
+      const config = {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
       };
       const params = {
         client_id: "yefcdrm50w8r7hdfcq4fpphkpdqqph",
@@ -37,10 +58,10 @@ export function Clips() {
       };
 
       await axios
-        .post("https://id.twitch.tv/oauth2/token", params, headers)
+        .post("https://id.twitch.tv/oauth2/token", params, config)
         .then((data) => {
           const { access_token, refresh_token } = data.data;
-          console.log(data);
+          setToken(access_token);
           localStorage.setItem("twitch-token", access_token);
           localStorage.setItem("twitch-token-refresh", refresh_token);
           setClipId(id);
@@ -50,11 +71,14 @@ export function Clips() {
           console.log(err);
         });
     };
+
     if (code !== null) {
       retrieveAccessToken();
     }
-  }, []);
-  console.log(localStorage.getItem("twitch-token"));
+    if (token !== "") {
+      getUserInfo();
+    }
+  }, [token]);
 
   return (
     <div className="container">
@@ -65,8 +89,8 @@ export function Clips() {
         <div style={{ padding: "50px" }} className="center-center">
           {clipId ? (
             <>
-              <div class="upload-clip">
-                <div class="are-upload-clip">
+              <div className="upload-clip">
+                <div className="are-upload-clip">
                   <div className="box-upload">
                     <div className="box-upload__title">
                       <TextGlitchRandomized text="Subir clip" />
@@ -90,8 +114,8 @@ export function Clips() {
                     </div>
                   </div>
                 </div>
-                <div class="area-help">
-                  <div class="area-help__title">
+                <div className="area-help">
+                  <div className="area-help__title">
                     <TextGlitchRandomized text="¿Tienes problemas al subir tu clip?" />
                   </div>
                 </div>

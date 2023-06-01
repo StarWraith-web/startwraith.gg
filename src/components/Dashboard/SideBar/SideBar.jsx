@@ -4,6 +4,7 @@ import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Menu, MenuItem, ProSidebar } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 import { tokens } from "../../../theme/theme";
+import useAuth from "../../../hooks/useAuth";
 import img from "../../../assets/img/img.jpg"
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -17,7 +18,7 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import StorageOutlinedIcon from '@mui/icons-material/StorageOutlined';
-import useAuth from "../../../hooks/useAuth";
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -157,6 +158,13 @@ export function SideBar() {
               title="Clips"
               to="/dashboard/clips"
               icon={<LiveTvOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Clips favoritos"
+              to="/dashboard/favoritos"
+              icon={<FavoriteBorderOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />

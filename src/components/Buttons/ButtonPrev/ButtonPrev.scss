@@ -1,0 +1,28 @@
+.play-btn-prev {
+  width: 60px;
+  height: 60px;
+  background: #444;
+  border-radius: 50%;
+  position: relative;
+  display: block;
+  margin: 100px auto;
+  border: none;
+  cursor: pointer;
+}
+
+/* triangle */
+.play-btn-prev::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-40%) translateY(-50%);
+  transform: translateX(40%) translateY(-50%);
+  transform-origin: center center;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 25px solid #fff;
+  z-index: 100;
+}
