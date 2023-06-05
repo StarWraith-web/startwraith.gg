@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
+import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { ButtonGlitch, Checkbox, Footer, TopBar } from "../../components";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -86,6 +87,11 @@ export function Clips() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if ([urlType, url, userName, title].includes("")) {
+      toast.error("Todos los campos son obligatorios");
+      return;
+    }
+
     const data = {
       author: userName,
       title: title,
@@ -93,8 +99,21 @@ export function Clips() {
       visualized: false,
       uploadDate: new Date().toLocaleDateString("en"),
       urlType: urlType,
+      rank: "iron",
     };
     console.log(data);
+    await axios
+      .post(
+        "https://api-starwraithgg.herokuapp.com/api/clips/upload-clip",
+        data
+      )
+      .then((resp) => {
+        console.log(resp);
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(err.response.data.msg);
+      });
   };
 
   return (
