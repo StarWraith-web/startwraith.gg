@@ -95,7 +95,7 @@ export function SideBar() {
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
                   alt="profile-user"
-                  width="145px"
+                  width="140px"
                   height="135px"
                   src={img}
                   style={{ cursor: "pointer", borderRadius: "50%" }}

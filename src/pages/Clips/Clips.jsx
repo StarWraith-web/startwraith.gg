@@ -1,26 +1,29 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import "./Clips.scss";
-import { useEffect, useState } from "react";
-import { ButtonGlitch, Footer, TopBar } from "../../components";
-import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { ButtonGlitch, Checkbox, Footer, TopBar } from "../../components";
+import { useLocation, useNavigate } from "react-router-dom";
 import { generateID } from "../../utils/functions";
-import {
-  TextGlitchRandomized,
-  TextGlitchUnderlined,
-} from "../../components/Animations";
+import { TextGlitchRandomized } from "../../components/Animations";
 import { InputText } from "../../components/InputText";
+import "./Clips.scss";
 
 export function Clips() {
-  const redirect = "https://starwraith.netlify.app/clips";
+  const redirect = "http://localhost:3000/clips";
   const id = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [clipId, setClipId] = useState(null);
-  const [userName, setUserName] = useState("");
   const [token, setToken] = useState("");
+  const [userName, setUserName] = useState("");
+  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
+  const [urlType, setUrlType] = useState("");
+  const [checkedYoutube, setCheckedYoutube] = useState(false);
+  const [checkedMedaltv, setCheckedMedaltv] = useState(false);
+  const [checkedTwitch, setCheckedTwitch] = useState(false);
   const code = new URLSearchParams(search).get("code");
 
   const navigate = useNavigate();
@@ -80,6 +83,20 @@ export function Clips() {
     }
   }, [token]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      author: userName,
+      title: title,
+      urlClip: url,
+      visualized: false,
+      uploadDate: new Date().toLocaleDateString("en"),
+      urlType: urlType,
+    };
+    console.log(data);
+  };
+
   return (
     <div className="container">
       <div className="top-bar-container">
@@ -96,21 +113,68 @@ export function Clips() {
                       <TextGlitchRandomized text="Subir clip" />
                     </div>
                     <div className="box-upload__content">
-                      <form>
+                      <div className="box-upload__content__left">
                         <div className="form-group">
                           <InputText
                             type="text"
                             name="title"
                             placeholder="Título"
+                            value={title}
+                            changeValue={setTitle}
                           />
                         </div>
                         <div className="form-group">
-                          <InputText type="text" name="url" placeholder="Url" />
+                          <InputText
+                            type="text"
+                            name="url"
+                            placeholder="Url"
+                            value={url}
+                            changeValue={setUrl}
+                          />
                         </div>
-                      </form>
+                      </div>
+                      <div className="box-upload__content__right">
+                        <h1>Tipo de clip</h1>
+                        <div className="checboxs-clips">
+                          <Checkbox
+                            text="Youtube"
+                            checked={checkedYoutube}
+                            changeValue={() => {
+                              setCheckedYoutube(!checkedYoutube);
+                              setCheckedMedaltv(false);
+                              setCheckedTwitch(false);
+                              setUrlType("youtube");
+                            }}
+                          />
+                          <Checkbox
+                            text="Medal.tv"
+                            checked={checkedMedaltv}
+                            changeValue={() => {
+                              setCheckedMedaltv(!checkedMedaltv);
+                              setCheckedTwitch(false);
+                              setCheckedYoutube(false);
+                              setUrlType("medaltv");
+                            }}
+                          />
+                          <Checkbox
+                            text="Twitch"
+                            checked={checkedTwitch}
+                            changeValue={() => {
+                              setCheckedTwitch(!checkedTwitch);
+                              setCheckedYoutube(false);
+                              setCheckedMedaltv(false);
+                              setUrlType("twitch");
+                            }}
+                          />
+                        </div>
+                      </div>
                     </div>
                     <div className="box-upload__buttons">
-                      <ButtonGlitch text="Subir mi clip" />
+                      <ButtonGlitch
+                        text="Subir mi clip"
+                        type="button"
+                        method={handleSubmit}
+                      />
                     </div>
                   </div>
                 </div>
@@ -140,7 +204,7 @@ export function Clips() {
                         redirect
                       )}&scope=user%3Aread%3Asubscriptions`}
                     >
-                      <ButtonGlitch text="Subir mi clip" />
+                      <ButtonGlitch text="Subir mi clip" type="button" />
                     </a>
                   </div>
                 </div>

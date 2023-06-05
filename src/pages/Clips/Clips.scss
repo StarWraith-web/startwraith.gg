@@ -36,12 +36,29 @@
 
       &__content {
         padding: 20px;
+        display: flex;
 
-        form {
-          .form-group {
-            padding: 10px;
-            margin-bottom: 10px;
+        &__left{
+          flex: 1;
+        }
+
+        &__right{
+          flex: 0 1 20%;
+
+          .checboxs-clips{
+            padding: 20px;
+            display: inline-block;
+            align-items: center;
+
+            p{
+              margin-left: 10px;
+            }
           }
+        }
+
+        .form-group {
+          padding: 10px;
+          margin-bottom: 10px;
         }
       }
 
