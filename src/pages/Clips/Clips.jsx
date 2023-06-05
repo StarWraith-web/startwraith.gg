@@ -11,7 +11,7 @@ import { InputText } from "../../components/InputText";
 import "./Clips.scss";
 
 export function Clips() {
-  const redirect = "https://starwraith.netlify.app/clips";
+  const redirect = "https://starwraith.netlify.app//clips";
   const id = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
@@ -109,6 +109,7 @@ export function Clips() {
       )
       .then((resp) => {
         console.log(resp);
+        toast.success(resp.data.msg)
         navigate("/");
       })
       .catch((err) => {
