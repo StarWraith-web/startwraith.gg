@@ -12,8 +12,8 @@ import "./Clips.scss";
 import videoClips from "../../assets/video/reaccion-clips.mp4";
 
 export function Clips() {
-  const redirect = "https://starwraith.netlify.app/clips";
-  const id = generateID();
+  const redirect = "http://localhost:3000/clips";
+  const idUrl = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -31,6 +31,30 @@ export function Clips() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const checkIfIsSub = async (userId) => {
+      const config = {
+        headers: {
+          "Client-Id": "yefcdrm50w8r7hdfcq4fpphkpdqqph",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      await axios
+        .get(
+          `https://api.twitch.tv/helix/subscriptions/user?broadcaster_id=32322994&user_id=${userId}`,
+          config
+        )
+        .then((resp) => {
+          console.log(resp);
+        })
+        .catch((err) => {
+          const { message } = err.response.data;
+          if (message.includes("does not subscribe")) {
+            toast.error("No estas suscrito a StarWraith");
+            navigate("/");
+          }
+        });
+    };
+
     const getUserInfo = async () => {
       const config = {
         headers: {
@@ -41,13 +65,15 @@ export function Clips() {
       await axios
         .get("https://api.twitch.tv/helix/users", config)
         .then((resp) => {
-          const { login } = resp.data.data[0];
+          const { id, login } = resp.data.data[0];
           setUserName(login);
+          checkIfIsSub(id);
         })
         .catch((err) => {
           console.log(err);
         });
     };
+
     const retrieveAccessToken = async () => {
       const config = {
         headers: {
@@ -69,8 +95,8 @@ export function Clips() {
           setToken(access_token);
           localStorage.setItem("twitch-token", access_token);
           localStorage.setItem("twitch-token-refresh", refresh_token);
-          setClipId(id);
-          navigate(`upload-clip/${id}`);
+          setClipId(idUrl);
+          navigate(`upload-clip/${idUrl}`);
         })
         .catch((err) => {
           console.log(err);
@@ -221,7 +247,7 @@ export function Clips() {
                   </div>
                   <div className="container-box-clip__button">
                     <a
-                      href={`https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=yefcdrm50w8r7hdfcq4fpphkpdqqph&redirect_uri=${encodeURIComponent(
+                      href={`https://id.twitch.tv/oauth2/authorize?response_type=code&force_verify=true&client_id=yefcdrm50w8r7hdfcq4fpphkpdqqph&redirect_uri=${encodeURIComponent(
                         redirect
                       )}&scope=user%3Aread%3Asubscriptions`}
                     >
