@@ -9,9 +9,10 @@ import { generateID } from "../../utils/functions";
 import { TextGlitchRandomized } from "../../components/Animations";
 import { InputText } from "../../components/InputText";
 import "./Clips.scss";
+import videoClips from "../../assets/video/reaccion-clips.mp4";
 
 export function Clips() {
-  const redirect = "https://starwraith.netlify.app/clips";
+  const redirect = "http://localhost:3000/clips";
   const id = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
@@ -109,7 +110,7 @@ export function Clips() {
       )
       .then((resp) => {
         console.log(resp);
-        toast.success(resp.data.msg)
+        toast.success(resp.data.msg);
         navigate("/");
       })
       .catch((err) => {
@@ -241,6 +242,14 @@ export function Clips() {
                     caso, no lo dudes y <b>sube tu clip</b> para que lo veamos
                     en directo los <b>domingos por la tarde</b>.
                   </p>
+                  <div className="box-border box">
+                    <div className="container-video-clips">
+                      <video controls autoPlay muted>
+                        <source src={videoClips} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
