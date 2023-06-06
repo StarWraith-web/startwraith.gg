@@ -45,12 +45,13 @@ export function Clips() {
         )
         .then((resp) => {
           console.log(resp);
+          toast.success("Estás suscrito a StarWraith")
         })
         .catch((err) => {
           const { message } = err.response.data;
           if (message.includes("does not subscribe")) {
-            toast.error("No estas suscrito a StarWraith");
             navigate("/");
+            toast.error("No estás suscrito a StarWraith");
           }
         });
     };
