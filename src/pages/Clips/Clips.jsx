@@ -12,7 +12,7 @@ import "./Clips.scss";
 import videoClips from "../../assets/video/reaccion-clips.mp4";
 
 export function Clips() {
-  const redirect = "https://starwraith.netlify.app//clips";
+  const redirect = "https://starwraith.netlify.app/clips";
   const idUrl = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
