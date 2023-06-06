@@ -12,7 +12,7 @@ import "./Clips.scss";
 import videoClips from "../../assets/video/reaccion-clips.mp4";
 
 export function Clips() {
-  const redirect = "http://localhost:3000/clips";
+  const redirect = "https://starwraith.netlify.app/clips";
   const id = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
@@ -243,7 +243,7 @@ export function Clips() {
                     en directo los <b>domingos por la tarde</b>.
                   </p>
                   <div className="box-border box">
-                    <div className="container-video-clips">
+                    <div className="container-video">
                       <video controls autoPlay muted>
                         <source src={videoClips} type="video/mp4" />
                         Your browser does not support the video tag.
