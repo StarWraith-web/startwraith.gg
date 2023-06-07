@@ -8,8 +8,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { generateID } from "../../utils/functions";
 import { TextGlitchRandomized } from "../../components/Animations";
 import { InputText } from "../../components/InputText";
-import "./Clips.scss";
 import videoClips from "../../assets/video/reaccion-clips.mp4";
+import "./Clips.scss";
 
 export function Clips() {
   const redirect = "https://starwraith.netlify.app/clips";
@@ -44,8 +44,7 @@ export function Clips() {
           config
         )
         .then((resp) => {
-          console.log(resp);
-          toast.success("Estás suscrito a StarWraith")
+          toast.success("Ya puedes subir tu clip")
         })
         .catch((err) => {
           const { message } = err.response.data;

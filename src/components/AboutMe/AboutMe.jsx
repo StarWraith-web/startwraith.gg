@@ -27,11 +27,12 @@ export function AboutMe() {
 
           <div className="about-para">
             <p>
-              Creador de Contenido para <b>Team Heretics</b>. Me inicié en el
-              mundo competitivo en el Counter-Strike: Source, allá por el 2003,
-              y desde entonces no dejé de intentar competir. He jugado en las
-              mejores ligas nacionales del CS:S y el CS:GO, también compitiendo
-              a nivel mundial en Apex Legends, llegando a las grandes finales.
+              Creador de contenido para <b>Case</b> y ex creador de contenido de{" "}
+              <b>Team Heretics</b>. Me inicié en el mundo competitivo en el
+              Counter-Strike: Source, allá por el 2003, y desde entonces no dejé
+              de intentar competir. He jugado en las mejores ligas nacionales
+              del CS:S y el CS:GO, también compitiendo a nivel mundial en Apex
+              Legends, llegando a las grandes finales.
             </p>
             <p>
               Fuera de la competición también destaco mi pasada por Riot Games,
