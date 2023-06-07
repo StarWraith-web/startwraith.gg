@@ -135,14 +135,14 @@ export function SideBar() {
             </Typography>
             <Item
               title="Usuarios baneados"
-              to="/dashboard"
+              to="/dashboard/users"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Base de datos"
-              to="/dashboard"
+              to="/dashboard/database"
               icon={<StorageOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

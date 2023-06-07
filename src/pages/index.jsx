@@ -5,4 +5,3 @@ export * from "./Clips";
 export * from "./LiderBoard";
 export * from "./PrivacyPolicy";
 export * from "./Login";
-export * from "./Favoritos"

@@ -40,27 +40,23 @@
 
         &__left {
           flex: 1;
-          /* background-color: aqua; */
 
-          .container-imagesrank{
+          .container-imagesrank {
             width: 750px;
             height: 140px;
             padding: 15px;
-            /* background-color: red; */
             display: flex;
             flex-wrap: wrap;
 
-            .image-item-rank{
+            .image-item-rank {
               padding: 5px;
               cursor: pointer;
 
-              img{
+              img {
                 width: 45px;
                 height: 45px;
               }
             }
-
-            
           }
         }
 

@@ -10,7 +10,6 @@ import {
   PrivacyPolicy,
   Tiers,
   Login,
-  Favoritos,
 } from "./pages";
 import {
   Barras,
@@ -20,6 +19,10 @@ import {
   Lineal,
   ClipsShow,
   Faq,
+  Favoritos,
+  DashboardHome,
+  BbDd,
+  Users,
 } from "./components";
 
 function App() {
@@ -41,7 +44,10 @@ function App() {
             </Route>
 
             <Route path="/dashboard" element={<ProtectedLayout />}>
-              <Route path="/dashboard/" element={<DashboardLayout />}>
+              <Route path="/dashboard" element={<DashboardLayout />}>
+                <Route path="/dashboard/" element={<DashboardHome />} />
+                <Route path="/dashboard/database" element={<BbDd />} />
+                <Route path="/dashboard/users" element={<Users />} />
                 <Route path="/dashboard/calendario" element={<Calendar />} />
                 <Route path="/dashboard/grafica-barras" element={<Barras />} />
                 <Route path="/dashboard/grafica-lineal" element={<Lineal />} />
