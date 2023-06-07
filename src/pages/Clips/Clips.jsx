@@ -9,7 +9,20 @@ import { generateID } from "../../utils/functions";
 import { TextGlitchRandomized } from "../../components/Animations";
 import { InputText } from "../../components/InputText";
 import videoClips from "../../assets/video/reaccion-clips.mp4";
+import { ranks } from "../../assets/data/ranks";
 import "./Clips.scss";
+
+const importAll = (r) => {
+  let images = {};
+  r.keys().forEach((item, index) => {
+    images[item.replace("./", "")] = r(item);
+  });
+  return images;
+};
+
+const images = importAll(
+  require.context("../../assets/img/ranks", false, /\.(png|jpe?g|svg)$/)
+);
 
 export function Clips() {
   const redirect = "https://starwraith.netlify.app/clips";
@@ -22,6 +35,7 @@ export function Clips() {
   const [userName, setUserName] = useState("");
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
+  const [rank, setRank] = useState("");
   const [urlType, setUrlType] = useState("");
   const [checkedYoutube, setCheckedYoutube] = useState(false);
   const [checkedMedaltv, setCheckedMedaltv] = useState(false);
@@ -44,7 +58,7 @@ export function Clips() {
           config
         )
         .then((resp) => {
-          toast.success("Ya puedes subir tu clip")
+          toast.success("Ya puedes subir tu clip");
         })
         .catch((err) => {
           const { message } = err.response.data;
@@ -114,7 +128,7 @@ export function Clips() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ([urlType, url, userName, title].includes("")) {
+    if ([urlType, url, userName, title, rank].includes("")) {
       toast.error("Todos los campos son obligatorios");
       return;
     }
@@ -124,11 +138,12 @@ export function Clips() {
       title: title,
       urlClip: url,
       visualized: false,
+      favorite: false,
       uploadDate: new Date().toLocaleDateString("en"),
       urlType: urlType,
-      rank: "iron",
+      rank: rank,
     };
-    console.log(data);
+
     await axios
       .post(
         "https://api-starwraithgg.herokuapp.com/api/clips/upload-clip",
@@ -170,6 +185,7 @@ export function Clips() {
                             changeValue={setTitle}
                           />
                         </div>
+
                         <div className="form-group">
                           <InputText
                             type="text"
@@ -178,6 +194,22 @@ export function Clips() {
                             value={url}
                             changeValue={setUrl}
                           />
+                        </div>
+
+                        <div className="container-imagesrank">
+                          {ranks.map((item) => {
+                            let image = `${item.key}.png`;
+                            return (
+                              <div className="image-item-rank">
+                                <img
+                                  key={item.id}
+                                  src={images[image]}
+                                  alt={item.name}
+                                  onClick={() => setRank(item.name)}
+                                />
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                       <div className="box-upload__content__right">

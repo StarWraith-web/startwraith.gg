@@ -5,6 +5,7 @@ export function InputText(props) {
   return (
     <div className="form__group field">
       <input
+        autoComplete="off"
         type={type}
         className="form__field"
         placeholder={placeholder}
