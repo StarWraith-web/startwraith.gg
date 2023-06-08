@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 import { Box, useTheme } from "@mui/material";
 import axios from "axios";
@@ -9,36 +10,32 @@ import { ButtonNext, ButtonPrev } from "../../Buttons";
 
 import "./ClipsShow.scss";
 
-const ITEMS_PER_PAGE = 1;
-
 export function ClipsShow() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [loading, setLoading] = useState(true);
   const [clips, setClips] = useState([]);
-  const [items, setItems] = useState([...clips].splice(0, ITEMS_PER_PAGE));
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [clipsPerPage, setClipsPerPage] = useState(1);
+
+  const pageNumbers = clips.length
+  const lastIndex = currentPage * clipsPerPage;
+  const firstIndex = lastIndex - clipsPerPage;
 
   const nextHandler = () => {
-    const totalElements = clips.length;
-    const nextPage = currentPage + 1;
-    const firstIndex = nextPage * ITEMS_PER_PAGE;
-
-    if (firstIndex === totalElements) return;
-
-    setItems([...clips].splice(firstIndex, ITEMS_PER_PAGE));
-    setCurrentPage(nextPage);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 600);
+    setCurrentPage(currentPage + 1);
   };
 
   const prevHandler = () => {
-    const prevPage = currentPage - 1;
-
-    if (prevPage < 0) return;
-
-    const firstIndex = prevPage * ITEMS_PER_PAGE;
-
-    setItems([...clips].splice(firstIndex, ITEMS_PER_PAGE));
-    setCurrentPage(prevPage);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 600);
+    setCurrentPage(currentPage - 1);
   };
 
   useEffect(() => {
@@ -50,7 +47,7 @@ export function ClipsShow() {
           const { data } = resp;
           console.log("DATA: ", data);
           setClips(data);
-          setItems(data.splice(0, ITEMS_PER_PAGE));
+          /* setItems(data.splice(0, ITEMS_PER_PAGE)); */
           setLoading(false);
         })
         .catch((err) => console.log(err));
@@ -74,7 +71,11 @@ export function ClipsShow() {
               <ContainerLoader />
             </div>
           ) : (
-            <Wrapper items={items} />
+            <Wrapper
+              clips={clips}
+              lastIndex={lastIndex}
+              firstIndex={firstIndex}
+            />
           )}
         </Box>
         <Box
@@ -99,8 +100,8 @@ export function ClipsShow() {
               </p>
             </div>
             <div className="bottom-section-clips">
-              <ButtonPrev prevHandler={prevHandler} />
-              <ButtonNext nextHandler={nextHandler} />
+              <ButtonPrev prevHandler={prevHandler} currentPage={currentPage} />
+              <ButtonNext nextHandler={nextHandler} currentPage={currentPage} pageNumbers={pageNumbers}/>
             </div>
           </div>
         </Box>
@@ -110,22 +111,25 @@ export function ClipsShow() {
 }
 
 const Wrapper = (props) => {
-  const items = props.items.map((item) => {
-    if (item.urlType === "youtube") {
-      return (
-        <div className="video-clips" key={item._id}>
-          <iframe
-            className="video"
-            width="100%"
-            title={item.title}
-            src={item.urlClip}
-            data-cookieconsent="marketing"
-            allowFullScreen
-          ></iframe>
-        </div>
-      );
-    }
-  });
+  const { clips, firstIndex, lastIndex } = props;
+  const items = clips
+    .map((item) => {
+      if (item.urlType === "youtube") {
+        return (
+          <div className="video-clips" key={item._id}>
+            <iframe
+              className="video"
+              width="100%"
+              title={item.title}
+              src={item.urlClip}
+              data-cookieconsent="marketing"
+              allowFullScreen
+            ></iframe>
+          </div>
+        );
+      }
+    })
+    .slice(firstIndex, lastIndex);
 
   return items;
 };
