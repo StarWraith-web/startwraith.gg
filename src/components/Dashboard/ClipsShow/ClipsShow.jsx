@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import { Box, useTheme } from "@mui/material";
 import axios from "axios";
 import { Header } from "../Header";
@@ -47,10 +48,10 @@ export function ClipsShow() {
         .get("https://api-starwraithgg.herokuapp.com/api/clips/get-clips")
         .then((resp) => {
           const { data } = resp;
+          console.log("DATA: ", data);
           setClips(data);
           setItems(data.splice(0, ITEMS_PER_PAGE));
           setLoading(false);
-          console.log("DATA: ", data);
         })
         .catch((err) => console.log(err));
     };
@@ -83,13 +84,13 @@ export function ClipsShow() {
           height="75vh"
           ml="15px"
         >
-          <div class="box-section-clips-buttons">
-            <div class="top-section-clips">
+          <div className="box-section-clips-buttons">
+            <div className="top-section-clips">
               <div className="top-section-clips__title">
                 <h1>Controles</h1>
               </div>
             </div>
-            <div class="middle-section-clips">
+            <div className="middle-section-clips">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Excepturi voluptate illum magni exercitationem nam illo
@@ -97,7 +98,7 @@ export function ClipsShow() {
                 iste, dolor ipsum vitae. Esse, dignissimos?
               </p>
             </div>
-            <div class="bottom-section-clips">
+            <div className="bottom-section-clips">
               <ButtonPrev prevHandler={prevHandler} />
               <ButtonNext nextHandler={nextHandler} />
             </div>
@@ -110,8 +111,21 @@ export function ClipsShow() {
 
 const Wrapper = (props) => {
   const items = props.items.map((item) => {
-    return <li key={item._id}>{item._id}</li>;
+    if (item.urlType === "youtube") {
+      return (
+        <div className="video-clips" key={item._id}>
+          <iframe
+            className="video"
+            width="100%"
+            title={item.title}
+            src={item.urlClip}
+            data-cookieconsent="marketing"
+            allowFullScreen
+          ></iframe>
+        </div>
+      );
+    }
   });
 
-  return <div>{items}</div>;
+  return items;
 };
