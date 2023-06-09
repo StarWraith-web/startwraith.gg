@@ -25,7 +25,7 @@ const images = importAll(
 );
 
 export function Clips() {
-  const redirect = "http://localhost:3000/clips";
+  const redirect = "https://starwraith.netlify.app/clips";
   const idUrl = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
