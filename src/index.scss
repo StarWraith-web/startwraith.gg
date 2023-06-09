@@ -14,7 +14,6 @@ body,
   height: 100%;
   width: 100%;
   background-image: none !important;
-  font-family: $arial !important;
 }
 
 .app {
@@ -48,7 +47,6 @@ body {
 }
 
 .center-center {
-  /* background-color: red; */
   width: 100%;
   min-height: 75vh;
   display: flex;
@@ -63,8 +61,29 @@ body {
   height: 100%;
 }
 
+.is-active {
+  opacity: 0.3;
+}
+
+.is-disabled{
+  opacity: 0.2;
+}
+
+b{
+  color: $primary;
+  letter-spacing: 1px;
+}
+
 .main-content {
   flex: 1;
+
+  p {
+    font-size: $default-size !important;
+  }
+
+  h1 {
+    font-size: $title-size !important;
+  }
 }
 
 .overlay-box {
@@ -75,16 +94,8 @@ body {
   justify-content: center;
 }
 
-.footer-section {
-  /* position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%; */
-}
-
 .top-bar-container {
   width: 100%;
-  /* background-color: red; */
 }
 
 .link {

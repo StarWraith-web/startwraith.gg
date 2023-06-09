@@ -1,7 +1,9 @@
+@import "../../../scss/index.scss";
+
 .play-btn-prev {
   width: 60px;
   height: 60px;
-  background: #444;
+  background: $primary;
   border-radius: 50%;
   position: relative;
   display: block;

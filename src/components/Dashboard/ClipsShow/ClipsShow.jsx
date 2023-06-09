@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
-import { Box, useTheme } from "@mui/material";
+import { Box, Button, useTheme } from "@mui/material";
 import axios from "axios";
 import { Header } from "../Header";
 import { tokens } from "../../../theme/theme";
@@ -18,7 +18,7 @@ export function ClipsShow() {
   const [currentPage, setCurrentPage] = useState(1);
   const [clipsPerPage, setClipsPerPage] = useState(1);
 
-  const pageNumbers = clips.length
+  const pageNumbers = clips.length;
   const lastIndex = currentPage * clipsPerPage;
   const firstIndex = lastIndex - clipsPerPage;
 
@@ -91,17 +91,23 @@ export function ClipsShow() {
                 <h1>Controles</h1>
               </div>
             </div>
-            <div className="middle-section-clips">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Excepturi voluptate illum magni exercitationem nam illo
-                voluptatem tempore iure sequi ducimus eius quo eaque, dolorem
-                iste, dolor ipsum vitae. Esse, dignissimos?
-              </p>
-            </div>
+            <div className="middle-section-clips"></div>
             <div className="bottom-section-clips">
-              <ButtonPrev prevHandler={prevHandler} currentPage={currentPage} />
-              <ButtonNext nextHandler={nextHandler} currentPage={currentPage} pageNumbers={pageNumbers}/>
+              <div className="buttons-steps">
+                <ButtonPrev
+                  prevHandler={prevHandler}
+                  currentPage={currentPage}
+                />
+                <ButtonNext
+                  nextHandler={nextHandler}
+                  currentPage={currentPage}
+                  pageNumbers={pageNumbers}
+                />
+              </div>
+
+              <div className="button-cliplist">
+                <Button variant="contained">Listado de clips</Button>
+              </div>
             </div>
           </div>
         </Box>
@@ -114,20 +120,18 @@ const Wrapper = (props) => {
   const { clips, firstIndex, lastIndex } = props;
   const items = clips
     .map((item) => {
-      if (item.urlType === "youtube") {
-        return (
-          <div className="video-clips" key={item._id}>
-            <iframe
-              className="video"
-              width="100%"
-              title={item.title}
-              src={item.urlClip}
-              data-cookieconsent="marketing"
-              allowFullScreen
-            ></iframe>
-          </div>
-        );
-      }
+      return (
+        <div className="video-clips" key={item._id}>
+          <iframe
+            className="video"
+            width="100%"
+            title={item.title}
+            src={item.urlClip}
+            data-cookieconsent="marketing"
+            allowFullScreen
+          ></iframe>
+        </div>
+      );
     })
     .slice(firstIndex, lastIndex);
 

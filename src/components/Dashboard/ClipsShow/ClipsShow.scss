@@ -24,16 +24,29 @@
 
   .middle-section-clips {
     /* background-color: blue; */
+    height: 430px;
     grid-area: middle-section-clips;
   }
 
   .bottom-section-clips {
-    /* background-color: aqua; */
-    display: flex;
-    align-items: center;
-    align-self: flex-end;
-    justify-content: space-evenly;
+    background-color: aqua;
+    height: auto;
     grid-area: bottom-section-clips;
+
+    .buttons-steps {
+     /*  height: 200px; */
+      background-color: red;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-evenly;
+    }
+
+    .button-cliplist {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 

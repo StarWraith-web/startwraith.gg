@@ -31,7 +31,7 @@
       &__title {
         letter-spacing: 3px;
         padding: 20px;
-        font-size: $title-size;
+        font-family: $header;
       }
 
       &__content {
@@ -49,12 +49,12 @@
             flex-wrap: wrap;
 
             .image-item-rank {
-              padding: 5px;
+              padding: 7px;
               cursor: pointer;
 
               img {
-                width: 45px;
-                height: 45px;
+                width: 40px;
+                height: 40px;
               }
             }
           }
@@ -100,6 +100,7 @@
     &__title {
       text-align: center;
       font-size: $title-size;
+      font-family: $header;
     }
 
     &__content {
@@ -143,6 +144,7 @@
         text-align: center;
         letter-spacing: 2px;
         font-size: $title-size;
+        font-family: $header;
       }
 
       &__content {
@@ -174,6 +176,7 @@
 
     &__title {
       font-size: $title-size;
+      font-family: $header;
     }
 
     &__content {

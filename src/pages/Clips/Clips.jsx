@@ -25,7 +25,7 @@ const images = importAll(
 );
 
 export function Clips() {
-  const redirect = "https://starwraith.netlify.app/clips";
+  const redirect = "http://localhost:3000/clips";
   const idUrl = generateID();
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
@@ -39,7 +39,7 @@ export function Clips() {
   const [urlType, setUrlType] = useState("");
   const [checkedYoutube, setCheckedYoutube] = useState(false);
   const [checkedMedaltv, setCheckedMedaltv] = useState(false);
-  const [checkedTwitch, setCheckedTwitch] = useState(false);
+  const [active, setActive] = useState(false)
   const code = new URLSearchParams(search).get("code");
 
   const navigate = useNavigate();
@@ -200,9 +200,9 @@ export function Clips() {
                           {ranks.map((item) => {
                             let image = `${item.key}.png`;
                             return (
-                              <div className="image-item-rank">
+                              <div className="image-item-rank" key={item.id}>
                                 <img
-                                  key={item.id}
+                                  className={`${rank === item.name ? "is-active" : ""}`}
                                   src={images[image]}
                                   alt={item.name}
                                   onClick={() => setRank(item.name)}
@@ -221,7 +221,6 @@ export function Clips() {
                             changeValue={() => {
                               setCheckedYoutube(!checkedYoutube);
                               setCheckedMedaltv(false);
-                              setCheckedTwitch(false);
                               setUrlType("youtube");
                             }}
                           />
@@ -230,19 +229,8 @@ export function Clips() {
                             checked={checkedMedaltv}
                             changeValue={() => {
                               setCheckedMedaltv(!checkedMedaltv);
-                              setCheckedTwitch(false);
                               setCheckedYoutube(false);
                               setUrlType("medaltv");
-                            }}
-                          />
-                          <Checkbox
-                            text="Twitch"
-                            checked={checkedTwitch}
-                            changeValue={() => {
-                              setCheckedTwitch(!checkedTwitch);
-                              setCheckedYoutube(false);
-                              setCheckedMedaltv(false);
-                              setUrlType("twitch");
                             }}
                           />
                         </div>
@@ -279,7 +267,7 @@ export function Clips() {
                   </div>
                   <div className="container-box-clip__button">
                     <a
-                      href={`https://id.twitch.tv/oauth2/authorize?response_type=code&force_verify=true&client_id=yefcdrm50w8r7hdfcq4fpphkpdqqph&redirect_uri=${encodeURIComponent(
+                      href={`https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=yefcdrm50w8r7hdfcq4fpphkpdqqph&redirect_uri=${encodeURIComponent(
                         redirect
                       )}&scope=user%3Aread%3Asubscriptions`}
                     >
