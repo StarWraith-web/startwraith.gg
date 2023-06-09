@@ -29,16 +29,16 @@
   }
 
   .bottom-section-clips {
-    background-color: aqua;
+    /* background-color: aqua; */
     height: auto;
     grid-area: bottom-section-clips;
 
     .buttons-steps {
-     /*  height: 200px; */
-      background-color: red;
+      height: 207px;
+      /* background-color: red; */
       display: flex;
-      align-items: flex-start;
-      justify-content: space-evenly;
+      align-items: center;
+      justify-content: space-around;
     }
 
     .button-cliplist {

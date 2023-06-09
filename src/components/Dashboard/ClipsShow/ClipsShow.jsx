@@ -6,7 +6,7 @@ import { Header } from "../Header";
 import { tokens } from "../../../theme/theme";
 import { useEffect, useState } from "react";
 import { ContainerLoader } from "../../Animations";
-import { ButtonNext, ButtonPrev } from "../../Buttons";
+import { ButtonCheckClip, ButtonNext, ButtonPrev } from "../../Buttons";
 
 import "./ClipsShow.scss";
 
@@ -98,6 +98,7 @@ export function ClipsShow() {
                   prevHandler={prevHandler}
                   currentPage={currentPage}
                 />
+                <ButtonCheckClip />
                 <ButtonNext
                   nextHandler={nextHandler}
                   currentPage={currentPage}
@@ -106,7 +107,9 @@ export function ClipsShow() {
               </div>
 
               <div className="button-cliplist">
-                <Button variant="contained">Listado de clips</Button>
+                <Button variant="contained" size="large">
+                  Listado de clips
+                </Button>
               </div>
             </div>
           </div>

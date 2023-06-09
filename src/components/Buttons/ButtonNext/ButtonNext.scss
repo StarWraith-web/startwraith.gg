@@ -10,6 +10,10 @@
   margin: 100px auto;
   border: none;
   cursor: pointer;
+
+  &:hover{
+    background: $primary-hover;
+  }
 }
 
 /* triangle */
