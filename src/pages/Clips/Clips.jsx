@@ -131,7 +131,7 @@ export function Clips() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ([urlType, url, userName, title, rank].includes("") || !checkedYoutube || !checkedMedaltv) {
+    if ([urlType, url, userName, title, rank].includes("") || (!checkedYoutube && !checkedMedaltv)) {
       toast.error("Todos los campos son obligatorios");
       return;
     }
