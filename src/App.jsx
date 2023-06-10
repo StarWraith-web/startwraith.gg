@@ -10,6 +10,7 @@ import {
   PrivacyPolicy,
   Tiers,
   Login,
+  Cookies,
 } from "./pages";
 import {
   Barras,
@@ -40,6 +41,7 @@ function App() {
               </Route>
               <Route path="liderboard" element={<LiderBoard />} />
               <Route path="politica-privacidad" element={<PrivacyPolicy />} />
+              <Route path="cookies" element={<Cookies />} />
               <Route path="login" element={<Login />} />
             </Route>
 

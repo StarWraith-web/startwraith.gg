@@ -1,7 +1,6 @@
 import { Footer, TopBar } from "../../components";
-import "./PrivacyPolicy.scss";
 
-export function PrivacyPolicy() {
+export function Cookies() {
   return (
     <div className="container">
       <div className="top-bar-container">
