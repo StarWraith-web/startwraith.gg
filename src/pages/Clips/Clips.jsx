@@ -30,6 +30,9 @@ export function Clips() {
   const regexYoutube = RegExp(
     /^(https|http):\/\/(?:www\.)?youtube.com\/embed\/[A-z0-9]+((?=(?:.*[@$?¡\-_]){1})\S{8,16})*$/gm
   );
+  const regexMedalTv = RegExp(
+    /^((http:\/\/(medal\.tv\/.*))|(https:\/\/(medal\.tv\/.*)))/gm
+  );
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -131,12 +134,20 @@ export function Clips() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ([urlType, url, userName, title, rank].includes("") || (!checkedYoutube && !checkedMedaltv)) {
+    if (
+      [urlType, url, userName, title, rank].includes("") ||
+      (!checkedYoutube && !checkedMedaltv)
+    ) {
       toast.error("Todos los campos son obligatorios");
       return;
     }
 
     if (checkedYoutube && !regexYoutube.test(url)) {
+      toast.error("La url no tiene el formato correcto");
+      return;
+    }
+
+    if (checkedMedaltv && !regexMedalTv.test(url)) {
       toast.error("La url no tiene el formato correcto");
       return;
     }
