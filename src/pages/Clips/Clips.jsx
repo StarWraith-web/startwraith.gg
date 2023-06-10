@@ -25,7 +25,7 @@ const images = importAll(
 );
 
 export function Clips() {
-  const redirect = "http://localhost:3000/clips";
+  const redirect = "https://starwraith.netlify.app/clips";
   const idUrl = generateID();
   const regexYoutube = RegExp(
     /^(https|http):\/\/(?:www\.)?youtube.com\/embed\/[A-z0-9]+(?=(?:.*[@$?¡\-_]){1})\S{8,16}$/gm
