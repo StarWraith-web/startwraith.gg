@@ -65,11 +65,11 @@ body {
   opacity: 0.3;
 }
 
-.is-disabled{
+.is-disabled {
   opacity: 0.2;
 }
 
-b{
+b {
   color: $primary;
   letter-spacing: 1px;
 }
@@ -83,6 +83,10 @@ b{
 
   h1 {
     font-size: $title-size !important;
+  }
+
+  h2 {
+    font-size: $subtitle-size !important;
   }
 }
 

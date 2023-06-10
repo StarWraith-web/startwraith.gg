@@ -27,6 +27,9 @@ const images = importAll(
 export function Clips() {
   const redirect = "https://starwraith.netlify.app/clips";
   const idUrl = generateID();
+  const regexYoutube = RegExp(
+    /^(https|http):\/\/(?:www\.)?youtube.com\/embed\/[A-z0-9]+(?=(?:.*[@$?¡\-_]){1})\S{8,16}$/gm
+  );
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -39,7 +42,7 @@ export function Clips() {
   const [urlType, setUrlType] = useState("");
   const [checkedYoutube, setCheckedYoutube] = useState(false);
   const [checkedMedaltv, setCheckedMedaltv] = useState(false);
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false);
   const code = new URLSearchParams(search).get("code");
 
   const navigate = useNavigate();
@@ -133,6 +136,11 @@ export function Clips() {
       return;
     }
 
+    if (checkedYoutube && !regexYoutube.test(url)) {
+      toast.error("La url no tiene el formato correcto");
+      return;
+    }
+
     const data = {
       author: userName,
       title: title,
@@ -202,7 +210,9 @@ export function Clips() {
                             return (
                               <div className="image-item-rank" key={item.id}>
                                 <img
-                                  className={`${rank === item.name ? "is-active" : ""}`}
+                                  className={`${
+                                    rank === item.name ? "is-active" : ""
+                                  }`}
                                   src={images[image]}
                                   alt={item.name}
                                   onClick={() => setRank(item.name)}
@@ -213,7 +223,7 @@ export function Clips() {
                         </div>
                       </div>
                       <div className="box-upload__content__right">
-                        <h1>Tipo de clip</h1>
+                        <h2>Tipo de clip</h2>
                         <div className="checboxs-clips">
                           <Checkbox
                             text="Youtube"
