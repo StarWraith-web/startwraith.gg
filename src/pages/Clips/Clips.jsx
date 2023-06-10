@@ -25,7 +25,7 @@ const images = importAll(
 );
 
 export function Clips() {
-  const redirect = "https://starwraith.netlify.app/clips";
+  const redirect = "http://localhost:3000/clips";
   const idUrl = generateID();
   const regexYoutube = RegExp(
     /^(https|http):\/\/(?:www\.)?youtube.com\/embed\/[A-z0-9]+(?=(?:.*[@$?¡\-_]){1})\S{8,16}$/gm
@@ -131,7 +131,7 @@ export function Clips() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ([urlType, url, userName, title, rank].includes("")) {
+    if ([urlType, url, userName, title, rank].includes("") || !checkedYoutube || !checkedMedaltv) {
       toast.error("Todos los campos son obligatorios");
       return;
     }
