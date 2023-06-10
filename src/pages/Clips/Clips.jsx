@@ -28,7 +28,7 @@ export function Clips() {
   const redirect = "https://starwraith.netlify.app/clips";
   const idUrl = generateID();
   const regexYoutube = RegExp(
-    /^(https|http):\/\/(?:www\.)?youtube.com\/embed\/[A-z0-9]+(?=(?:.*[@$?¡\-_]){1})\S{8,16}$/gm
+    /^(https|http):\/\/(?:www\.)?youtube.com\/embed\/[A-z0-9]+((?=(?:.*[@$?¡\-_]){1})\S{8,16})*$/gm
   );
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
