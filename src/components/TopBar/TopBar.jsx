@@ -90,8 +90,7 @@ export function TopBar() {
       <div ref={first_indicator} className="indicator" />
       <div ref={second_indicator} className="indicator" />
 
-      <Link to="/login" className="center" style={{color: "white"}}>
-        
+      <Link to="/login" className="center" style={{color: "white"}}>       
         <AccountCircleIcon />
       </Link>    
 

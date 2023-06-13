@@ -77,6 +77,39 @@ b {
 .main-content {
   flex: 1;
 
+  .container-cookies {
+    margin: auto;
+    padding: 10px;
+    width: 80%;
+    letter-spacing: 1px;
+
+    h1 {
+      text-align: center;
+      padding: 10px;
+    }
+
+    ul {
+      text-align: left;
+      padding: 15px;
+      list-style-position: inside;
+
+      li {
+        padding: 5px;
+        font-size: $default-size;
+      }
+    }
+
+    h2 {
+      padding: 20px 10px 20px 10px;
+    }
+
+    p {
+      text-align: left;
+      padding: 5px;
+      letter-spacing: 1px;
+    }
+  }
+
   p {
     font-size: $default-size !important;
   }

@@ -37,6 +37,7 @@ export function Footer() {
             <li>
               <a
                 href="https://teamheretics.com/21-store"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 Teamheretics Store

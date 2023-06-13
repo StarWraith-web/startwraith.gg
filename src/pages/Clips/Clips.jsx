@@ -169,7 +169,6 @@ export function Clips() {
         data
       )
       .then((resp) => {
-        console.log(resp);
         toast.success(resp.data.msg);
         navigate("/");
       })
