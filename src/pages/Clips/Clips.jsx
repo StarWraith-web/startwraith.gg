@@ -31,7 +31,10 @@ export function Clips() {
     /^(https|http):\/\/(?:www\.)?youtube.com\/embed\/[A-z0-9]+((?=(?:.*[@$?¡\-_]){1})\S{8,16})*$/gm
   );
   const regexMedalTv = RegExp(
-    /^((http:\/\/(medal\.tv\/.*))|(https:\/\/(medal\.tv\/.*)))/gm
+    /^((http:\/\/(medal\.tv\/.*))|(https:\/\/(medal\.tv\/.*)))$/gm
+  );
+  const regexTwitch = RegExp(
+    /^((http:\/\/(.*\.twitch\.tv\/.*|twitch\.tv\/.*))|(https:\/\/(.*\.twitch\.tv\/.*|twitch\.tv\/.*)))$/gm
   );
   const { search, error_description } = useLocation();
   const [loading, setLoading] = useState(false);
@@ -46,6 +49,7 @@ export function Clips() {
   const [urlType, setUrlType] = useState("");
   const [checkedYoutube, setCheckedYoutube] = useState(false);
   const [checkedMedaltv, setCheckedMedaltv] = useState(false);
+  const [checkedTwitch, setCheckedTwitch] = useState(false)
   const [active, setActive] = useState(false);
   const code = new URLSearchParams(search).get("code");
 
@@ -137,7 +141,7 @@ export function Clips() {
 
     if (
       [urlType, url, userName, title, rank].includes("") ||
-      (!checkedYoutube && !checkedMedaltv)
+      (!checkedYoutube && !checkedMedaltv && !checkedTwitch)
     ) {
       toast.error("Todos los campos son obligatorios");
       return;
@@ -149,6 +153,11 @@ export function Clips() {
     }
 
     if (checkedMedaltv && !regexMedalTv.test(url)) {
+      toast.error("La url no tiene el formato correcto");
+      return;
+    }
+
+    if (checkedTwitch && !regexTwitch.test(url)) {
       toast.error("La url no tiene el formato correcto");
       return;
     }
@@ -246,6 +255,7 @@ export function Clips() {
                             changeValue={() => {
                               setCheckedYoutube(!checkedYoutube);
                               setCheckedMedaltv(false);
+                              setCheckedTwitch(false)
                               setUrlType("youtube");
                             }}
                           />
@@ -255,7 +265,18 @@ export function Clips() {
                             changeValue={() => {
                               setCheckedMedaltv(!checkedMedaltv);
                               setCheckedYoutube(false);
+                              setCheckedTwitch(false)
                               setUrlType("medaltv");
+                            }}
+                          />
+                          <Checkbox
+                            text="Twitch.tv"
+                            checked={checkedTwitch}
+                            changeValue={() => {
+                              setCheckedTwitch(!checkedTwitch)
+                              setCheckedMedaltv(false);
+                              setCheckedYoutube(false);
+                              setUrlType("twitch");
                             }}
                           />
                         </div>

@@ -61,7 +61,7 @@ export function ClipsShow() {
           setClips(data);
           setLoading(false);
         })
-        .catch((err) => toast.error(err.msg));
+        .catch((err) => toast.error(err.response.data.msg));
     };
 
     getClips();
@@ -90,7 +90,7 @@ export function ClipsShow() {
           )}
         </Box>
         <Box
-          flex="1 1 20%"
+          flex="1 1 25%"
           backgroundColor={colors.primary[400]}
           borderRadius="4px"
           height="75vh"
@@ -115,7 +115,11 @@ export function ClipsShow() {
                   prevHandler={prevHandler}
                   currentPage={currentPage}
                 />
-                <ButtonCheckClip />
+                <ButtonCheckClip
+                  clips={clips}
+                  lastIndex={lastIndex}
+                  firstIndex={firstIndex}
+                />
                 <ButtonNext
                   nextHandler={nextHandler}
                   currentPage={currentPage}
@@ -140,18 +144,37 @@ const Wrapper = (props) => {
   const { clips, firstIndex, lastIndex } = props;
   const items = clips
     .map((item) => {
-      return (
-        <div className="video-clips" key={item._id}>
-          <iframe
-            className="video"
-            width="100%"
-            title={item.title}
-            src={item.urlClip}
-            data-cookieconsent="marketing"
-            allowFullScreen
-          ></iframe>
-        </div>
-      );
+      if (item.urlType !== "youtube") {
+        return (
+          <div className="container-button-clip">
+            <p>
+              Por motivo de cookies, los clips de medaltv y twitch no se
+              renderizaran en el dashboard. Por favor pulse el botón para abrir
+              el clip.
+            </p>
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => window.open(item.urlClip, "_blank")}
+            >
+              Abrir Clip
+            </Button>
+          </div>
+        );
+      } else {
+        return (
+          <div className="video-clips" key={item._id}>
+            <iframe
+              className="video"
+              width="100%"
+              title={item.title}
+              src={item.urlClip}
+              data-cookieconsent="marketing"
+              allowFullScreen
+            ></iframe>
+          </div>
+        );
+      }
     })
     .slice(firstIndex, lastIndex);
 
@@ -185,6 +208,11 @@ const ClipInfo = (props) => {
               <Box p="5px" display="flex" alignItems="center">
                 <p className="text-bold">
                   <b>Fecha subida:</b> {item.uploadDate}
+                </p>
+              </Box>
+              <Box p="5px" display="flex" alignItems="center">
+                <p className="text-bold">
+                  <b>Tipo clip:</b> {item.urlType}
                 </p>
               </Box>
             </Box>
