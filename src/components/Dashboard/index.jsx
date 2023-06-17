@@ -12,3 +12,4 @@ export * from "./Barras";
 export * from "./Donut";
 export * from "./Lineal";
 export * from "./Geografica";
+export * from "./ClipsViews"

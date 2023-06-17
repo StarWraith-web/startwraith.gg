@@ -12,13 +12,14 @@ import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import ResetTvOutlinedIcon from '@mui/icons-material/ResetTvOutlined';
+import StorageOutlinedIcon from '@mui/icons-material/StorageOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import StorageOutlinedIcon from '@mui/icons-material/StorageOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -111,7 +112,7 @@ export function SideBar() {
                   {auth.name}
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Streamer
+                  Streamer & Content Creator
                 </Typography>
               </Box>
             </Box>
@@ -162,6 +163,13 @@ export function SideBar() {
               setSelected={setSelected}
             />
             <Item
+              title="Clips Vistos"
+              to="/dashboard/clipsview"
+              icon={<ResetTvOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
               title="Clips favoritos"
               to="/dashboard/favoritos"
               icon={<FavoriteBorderOutlinedIcon />}
@@ -169,52 +177,9 @@ export function SideBar() {
               setSelected={setSelected}
             />
             <Item
-              title="Calendario"
-              to="/dashboard/calendario"
-              icon={<CalendarTodayOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
               title="FAQ Page"
               to="/dashboard/faq"
               icon={<HelpOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Actividad
-            </Typography>
-            <Item
-              title="Gráfica de barras"
-              to="/dashboard/grafica-barras"
-              icon={<BarChartOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Gráfica de donut"
-              to="/dashboard/grafica-donut"
-              icon={<PieChartOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Gráfica de líneas"
-              to="/dashboard/grafica-lineal"
-              icon={<TimelineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Gráfica geográfica"
-              to="/dashboard/grafica-geografica"
-              icon={<MapOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />

@@ -24,6 +24,7 @@ import {
   DashboardHome,
   BbDd,
   Users,
+  ClipsViews,
 } from "./components";
 
 function App() {
@@ -54,8 +55,9 @@ function App() {
                 <Route path="/dashboard/grafica-barras" element={<Barras />} />
                 <Route path="/dashboard/grafica-lineal" element={<Lineal />} />
                 <Route path="/dashboard/grafica-donut" element={<Donut />} />
-                <Route path="/dashboard/favoritos" element={<Favoritos />} />
                 <Route path="/dashboard/clips" element={<ClipsShow />} />
+                <Route path="/dashboard/clipsview" element={<ClipsViews />} />
+                <Route path="/dashboard/favoritos" element={<Favoritos />} />
                 <Route path="/dashboard/faq" element={<Faq />} />
                 <Route
                   path="/dashboard/grafica-geografica"

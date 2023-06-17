@@ -42,6 +42,7 @@ export function Clips() {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [rank, setRank] = useState("");
+  const [rankKey, setRankKey] = useState("");
   const [urlType, setUrlType] = useState("");
   const [checkedYoutube, setCheckedYoutube] = useState(false);
   const [checkedMedaltv, setCheckedMedaltv] = useState(false);
@@ -161,6 +162,7 @@ export function Clips() {
       uploadDate: new Date().toLocaleDateString("en"),
       urlType: urlType,
       rank: rank,
+      rankKey: rankKey,
     };
 
     await axios
@@ -225,7 +227,10 @@ export function Clips() {
                                   }`}
                                   src={images[image]}
                                   alt={item.name}
-                                  onClick={() => setRank(item.name)}
+                                  onClick={() => {
+                                    setRank(item.name);
+                                    setRankKey(item.key);
+                                  }}
                                 />
                               </div>
                             );
@@ -287,7 +292,7 @@ export function Clips() {
                   </div>
                   <div className="container-box-clip__button">
                     <a
-                      href={`https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=yefcdrm50w8r7hdfcq4fpphkpdqqph&redirect_uri=${encodeURIComponent(
+                      href={`https://id.twitch.tv/oauth2/authorize?response_type=code&force_verify=true&client_id=yefcdrm50w8r7hdfcq4fpphkpdqqph&redirect_uri=${encodeURIComponent(
                         redirect
                       )}&scope=user%3Aread%3Asubscriptions`}
                     >

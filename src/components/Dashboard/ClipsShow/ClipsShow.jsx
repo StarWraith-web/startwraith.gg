@@ -9,6 +9,19 @@ import { ContainerLoader } from "../../Animations";
 import { ButtonCheckClip, ButtonNext, ButtonPrev } from "../../Buttons";
 
 import "./ClipsShow.scss";
+import { toast } from "react-toastify";
+
+const importAll = (r) => {
+  let images = {};
+  r.keys().forEach((item, index) => {
+    images[item.replace("./", "")] = r(item);
+  });
+  return images;
+};
+
+const images = importAll(
+  require.context("../../../assets/img/ranks", false, /\.(png|jpe?g|svg)$/)
+);
 
 export function ClipsShow() {
   const theme = useTheme();
@@ -45,12 +58,10 @@ export function ClipsShow() {
         .get("https://api-starwraithgg.herokuapp.com/api/clips/get-clips")
         .then((resp) => {
           const { data } = resp;
-          console.log("DATA: ", data);
           setClips(data);
-          /* setItems(data.splice(0, ITEMS_PER_PAGE)); */
           setLoading(false);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => toast.error(err.msg));
     };
 
     getClips();
@@ -91,7 +102,13 @@ export function ClipsShow() {
                 <h1>Controles</h1>
               </div>
             </div>
-            <div className="middle-section-clips"></div>
+            <div className="middle-section-clips">
+              <ClipInfo
+                clips={clips}
+                lastIndex={lastIndex}
+                firstIndex={firstIndex}
+              />
+            </div>
             <div className="bottom-section-clips">
               <div className="buttons-steps">
                 <ButtonPrev
@@ -134,6 +151,45 @@ const Wrapper = (props) => {
             allowFullScreen
           ></iframe>
         </div>
+      );
+    })
+    .slice(firstIndex, lastIndex);
+
+  return items;
+};
+
+const ClipInfo = (props) => {
+  const { clips, firstIndex, lastIndex } = props;
+  const items = clips
+    .map((item) => {
+      let image = `${item.rankKey}.png`;
+      return (
+        <Box p="15px" key={item._id}>
+          <h2 style={{ textAlign: "center" }}>{item.title}</h2>
+          <Box display="inline-block">
+            <Box pt="20px" pb="20px">
+              <Box p="5px" display="flex" alignItems="center">
+                <p className="text-bold">
+                  <b>Autor:</b> {item.author}
+                </p>
+              </Box>
+              <Box p="5px" display="flex" alignItems="center">
+                <p className="text-bold">
+                  <b>Rango:</b>
+                </p>
+                <div className="image-rank">
+                  <img src={images[image]} alt={item.rank} />
+                </div>
+              </Box>
+
+              <Box p="5px" display="flex" alignItems="center">
+                <p className="text-bold">
+                  <b>Fecha subida:</b> {item.uploadDate}
+                </p>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
       );
     })
     .slice(firstIndex, lastIndex);

@@ -1,11 +1,10 @@
-@import "../../../scss//index.scss";
+@import "../../../scss/index.scss";
 
 .box-section-clips-buttons {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   width: 100%;
   height: 100%;
-  /* background-color: red; */
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
@@ -13,9 +12,13 @@
     "middle-section-clips middle-section-clips middle-section-clips"
     "bottom-section-clips bottom-section-clips bottom-section-clips";
 
+  h1{
+    font-size: $title-size;
+    letter-spacing: 2px;
+  }
+
   .top-section-clips {
     grid-area: top-section-clips;
-    /* background-color: brown; */
 
     &__title {
       text-align: center;
@@ -23,26 +26,22 @@
   }
 
   .middle-section-clips {
-    /* background-color: blue; */
     height: 430px;
     grid-area: middle-section-clips;
   }
 
   .bottom-section-clips {
-    /* background-color: aqua; */
     height: auto;
     grid-area: bottom-section-clips;
 
     .buttons-steps {
-      height: 207px;
-      /* background-color: red; */
+      height: 160px;
       display: flex;
       align-items: center;
       justify-content: space-around;
     }
 
     .button-cliplist {
-      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -63,4 +62,23 @@
     margin: 0;
     padding: 0;
   }
+}
+
+.image-rank {
+  cursor: pointer;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -5px;
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.text-bold{
+  font-size: $default-size;
+  letter-spacing: 2px;
+  margin: 5px;
 }
