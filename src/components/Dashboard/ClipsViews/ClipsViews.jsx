@@ -12,8 +12,8 @@ const columns = [
   { field: "id", headerName: "ID", width: 200 },
   { field: "author", headerName: "Autor", width: 150 },
   { field: "title", headerName: "Título Clip", width: 400 },
-  { field: "rank", headerName: "Rango", width: 250 },
-  { field: "urlClip", headerName: "Url", width: 350 },
+  { field: "rank", headerName: "Rango", width: 100 },
+  { field: "urlClip", headerName: "Url", width: 500 },
   { field: "uploadDate", headerName: "Fecha Subida", width: 250 },
 ];
 

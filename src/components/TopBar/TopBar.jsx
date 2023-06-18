@@ -16,11 +16,6 @@ const items = [
     href: "/tiers",
   },
   {
-    name: "Eventos",
-    color: "#9c27b0",
-    href: "/eventos",
-  },
-  {
     name: "Clips",
     color: "#673ab7",
     href: "/clips",

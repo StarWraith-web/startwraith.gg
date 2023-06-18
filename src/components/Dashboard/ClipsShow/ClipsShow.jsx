@@ -6,7 +6,7 @@ import { Header } from "../Header";
 import { tokens } from "../../../theme/theme";
 import { useEffect, useState } from "react";
 import { ContainerLoader } from "../../Animations";
-import { ButtonCheckClip, ButtonNext, ButtonPrev } from "../../Buttons";
+import { ButtonNext, ButtonPrev } from "../../Buttons";
 
 import "./ClipsShow.scss";
 import { toast } from "react-toastify";
@@ -28,6 +28,7 @@ export function ClipsShow() {
   const colors = tokens(theme.palette.mode);
   const [loading, setLoading] = useState(true);
   const [clips, setClips] = useState([]);
+  const [clipsToShow, setClipsShow] = useState(clips);
   const [currentPage, setCurrentPage] = useState(1);
   const [clipsPerPage, setClipsPerPage] = useState(1);
 
@@ -59,6 +60,7 @@ export function ClipsShow() {
         .then((resp) => {
           const { data } = resp;
           setClips(data);
+          setClipsShow(data);
           setLoading(false);
         })
         .catch((err) => toast.error(err.response.data.msg));
@@ -66,6 +68,26 @@ export function ClipsShow() {
 
     getClips();
   }, []);
+
+  const handleView = async (_id) => {
+    await axios
+      .patch("https://api-starwraithgg.herokuapp.com/api/clips/view-clip", {
+        _id,
+      })
+      .then((resp) => {
+        toast.success(resp.data.msg);
+      })
+      .catch((err) => {
+        toast.error(err.response.data.msg);
+      });
+  };
+
+  const handleRemoveOnClick = (itemList, item) => {
+    const index = itemList.indexOf(item);
+    let newItems = [...itemList];
+    newItems.splice(index, 1);
+    setClips(newItems);
+  };
 
   return (
     <Box m="20px">
@@ -115,11 +137,23 @@ export function ClipsShow() {
                   prevHandler={prevHandler}
                   currentPage={currentPage}
                 />
-                <ButtonCheckClip
-                  clips={clips}
-                  lastIndex={lastIndex}
-                  firstIndex={firstIndex}
-                />
+                {clips
+                  .map((item, index) => (
+                    <div className="container-check-clip" key={item._id}>
+                      <input
+                        type="checkbox"
+                        id="checkbox-clip"
+                        onChange={() => {
+                          handleView(item._id);
+                          handleRemoveOnClick(clips, item);
+                        }}
+                      />
+                      <label htmlFor="checkbox-clip">
+                        <div id="tick_mark"></div>
+                      </label>
+                    </div>
+                  ))
+                  .slice(firstIndex, lastIndex)}
                 <ButtonNext
                   nextHandler={nextHandler}
                   currentPage={currentPage}
@@ -146,11 +180,11 @@ const Wrapper = (props) => {
     .map((item) => {
       if (item.urlType !== "youtube") {
         return (
-          <div className="container-button-clip">
+          <div className="container-button-clip" key={item._id}>
             <p>
-              Por motivo de cookies, los clips de medaltv y twitch no se
-              renderizaran en el dashboard. Por favor pulse el botón para abrir
-              el clip.
+              Por motivo de cookies, los clips de <b>medaltv</b> y <b>twitch</b>{" "}
+              no se renderizaran en el dashboard. Por favor{" "}
+              <b>pulse el botón</b> para abrir el clip.
             </p>
             <Button
               variant="contained"
@@ -178,7 +212,13 @@ const Wrapper = (props) => {
     })
     .slice(firstIndex, lastIndex);
 
-  return items;
+  return items.length === 0 ? (
+    <div className="container-button-clip">
+      <p>No hay mas clips para ver</p>
+    </div>
+  ) : (
+    items
+  );
 };
 
 const ClipInfo = (props) => {
