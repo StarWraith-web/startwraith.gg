@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
-import { Box, useTheme } from "@mui/material";
+import { Box, Button, useTheme } from "@mui/material";
 import { tokens } from "../../../theme/theme";
 import { Header } from "../Header";
 import { DataGrid } from "@mui/x-data-grid";
@@ -10,11 +10,27 @@ import { ContainerLoader } from "../../Animations";
 
 const columns = [
   { field: "id", headerName: "ID", width: 200 },
-  { field: "author", headerName: "Autor", width: 150 },
+  { field: "author", headerName: "Autor", width: 100 },
   { field: "title", headerName: "Título Clip", width: 400 },
   { field: "rank", headerName: "Rango", width: 100 },
   { field: "urlClip", headerName: "Url", width: 500 },
-  { field: "uploadDate", headerName: "Fecha Subida", width: 250 },
+  { field: "uploadDate", headerName: "Fecha Subida", width: 150 },
+  {
+    field: "action",
+    headerName: "Action",
+    sortable: false,
+    renderCell: (params) => {
+      return (
+        <Button
+          variant="contained"
+          size="large"
+          onClick={() => window.open(params.row.urlClip, "_blank")}
+        >
+          Ver clip
+        </Button>
+      );
+    },
+  },
 ];
 
 export function ClipsViews() {
