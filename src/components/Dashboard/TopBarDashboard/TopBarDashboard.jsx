@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Box, IconButton, useTheme } from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext } from "../../../theme/theme";
@@ -29,12 +30,6 @@ export function TopBarDashboard() {
           ) : (
             <LightModeOutlinedIcon />
           )}
-        </IconButton>
-        <IconButton>
-          <NotificationsOutlinedIcon />
-        </IconButton>
-        <IconButton>
-          <SettingsOutlinedIcon />
         </IconButton>
         <IconButton onClick={handleCloseSession}>
           <LogoutIcon />
