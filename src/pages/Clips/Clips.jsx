@@ -8,8 +8,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { generateID } from "../../utils/functions";
 import { TextGlitchRandomized } from "../../components/Animations";
 import { InputText } from "../../components/InputText";
-import videoClips from "../../assets/video/reaccion-clips.mp4";
 import { ranks } from "../../assets/data/ranks";
+import videoClips from "../../assets/video/reaccion-clips.mp4";
 import "./Clips.scss";
 
 const importAll = (r) => {
@@ -49,7 +49,7 @@ export function Clips() {
   const [urlType, setUrlType] = useState("");
   const [checkedYoutube, setCheckedYoutube] = useState(false);
   const [checkedMedaltv, setCheckedMedaltv] = useState(false);
-  const [checkedTwitch, setCheckedTwitch] = useState(false)
+  const [checkedTwitch, setCheckedTwitch] = useState(false);
   const [active, setActive] = useState(false);
   const code = new URLSearchParams(search).get("code");
 
@@ -95,7 +95,7 @@ export function Clips() {
           checkIfIsSub(id);
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(err.response.data.msg);
         });
     };
 
@@ -124,7 +124,7 @@ export function Clips() {
           navigate(`upload-clip/${idUrl}`);
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(err.response.data.msg);
         });
     };
 
@@ -255,7 +255,7 @@ export function Clips() {
                             changeValue={() => {
                               setCheckedYoutube(!checkedYoutube);
                               setCheckedMedaltv(false);
-                              setCheckedTwitch(false)
+                              setCheckedTwitch(false);
                               setUrlType("youtube");
                             }}
                           />
@@ -265,7 +265,7 @@ export function Clips() {
                             changeValue={() => {
                               setCheckedMedaltv(!checkedMedaltv);
                               setCheckedYoutube(false);
-                              setCheckedTwitch(false)
+                              setCheckedTwitch(false);
                               setUrlType("medaltv");
                             }}
                           />
@@ -273,7 +273,7 @@ export function Clips() {
                             text="Twitch.tv"
                             checked={checkedTwitch}
                             changeValue={() => {
-                              setCheckedTwitch(!checkedTwitch)
+                              setCheckedTwitch(!checkedTwitch);
                               setCheckedMedaltv(false);
                               setCheckedYoutube(false);
                               setUrlType("twitch");

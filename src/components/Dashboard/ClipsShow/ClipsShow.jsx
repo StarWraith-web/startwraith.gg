@@ -1,15 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
-import { Box, Button, useTheme } from "@mui/material";
+import { Box, Button, Divider, IconButton, useTheme } from "@mui/material";
 import axios from "axios";
 import { Header } from "../Header";
 import { tokens } from "../../../theme/theme";
 import { useEffect, useState } from "react";
 import { ContainerLoader } from "../../Animations";
 import { ButtonNext, ButtonPrev } from "../../Buttons";
+import { toast } from "react-toastify";
+import BlockOutlinedIcon from "@mui/icons-material/BlockOutlined";
+import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 
 import "./ClipsShow.scss";
-import { toast } from "react-toastify";
 
 const importAll = (r) => {
   let images = {};
@@ -28,7 +30,6 @@ export function ClipsShow() {
   const colors = tokens(theme.palette.mode);
   const [loading, setLoading] = useState(true);
   const [clips, setClips] = useState([]);
-  const [clipsToShow, setClipsShow] = useState(clips);
   const [currentPage, setCurrentPage] = useState(1);
   const [clipsPerPage, setClipsPerPage] = useState(1);
 
@@ -60,7 +61,6 @@ export function ClipsShow() {
         .then((resp) => {
           const { data } = resp;
           setClips(data);
-          setClipsShow(data);
           setLoading(false);
         })
         .catch((err) => toast.error(err.response.data.msg));
@@ -129,6 +129,7 @@ export function ClipsShow() {
                 clips={clips}
                 lastIndex={lastIndex}
                 firstIndex={firstIndex}
+                handleRemoveOnClick={handleRemoveOnClick}
               />
             </div>
             <div className="bottom-section-clips">
@@ -222,7 +223,21 @@ const Wrapper = (props) => {
 };
 
 const ClipInfo = (props) => {
-  const { clips, firstIndex, lastIndex } = props;
+  const { clips, firstIndex, lastIndex, handleRemoveOnClick } = props;
+
+  const handleBanUser = async (name) => {
+    const data = {
+      name,
+      bannedDate: new Date().toLocaleDateString("en"),
+    };
+    await axios
+      .post("https://api-starwraithgg.herokuapp.com/api/users/ban-user", data)
+      .then((resp) => {
+        toast.success(resp.data.msg);
+      })
+      .catch((err) => toast.error(err.response.data.msg));
+  };
+
   const items = clips
     .map((item) => {
       let image = `${item.rankKey}.png`;
@@ -253,6 +268,27 @@ const ClipInfo = (props) => {
               <Box p="5px" display="flex" alignItems="center">
                 <p className="text-bold">
                   <b>Tipo clip:</b> {item.urlType}
+                </p>
+              </Box>
+            </Box>
+          </Box>
+          <Divider variant="middle" />
+          <Box display="inline-block">
+            <Box pt="20px" pb="20px">
+              <Box p="5px" display="flex" alignItems="center">
+                <p className="text-bold">
+                  <b>Banear a usuario:</b>{" "}
+                  <IconButton onClick={() => {handleBanUser(item.author); handleRemoveOnClick(clips, item)}}>
+                    <BlockOutlinedIcon />
+                  </IconButton>
+                </p>
+              </Box>
+              <Box p="5px" display="flex" alignItems="center">
+                <p className="text-bold">
+                  <b>Añadir a favorito:</b>{" "}
+                  <IconButton>
+                    <FavoriteOutlinedIcon />
+                  </IconButton>
                 </p>
               </Box>
             </Box>

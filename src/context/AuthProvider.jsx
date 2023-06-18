@@ -2,6 +2,7 @@
 import { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -33,9 +34,9 @@ const AuthProvider = ({ children }) => {
         );
         setAuth(data);
         navigate("/dashboard");
-      } catch (error) {
+      } catch (err) {
         setAuth({});
-        console.log(error);
+        toast.error(err.response.data.msg)
       } finally {
         setLoading(false);
       }

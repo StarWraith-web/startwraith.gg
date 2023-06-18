@@ -21,11 +21,7 @@ const columns = [
     sortable: false,
     renderCell: (params) => {
       return (
-        <Button
-          variant="contained"
-          size="large"
-          onClick={() => window.open(params.row.urlClip, "_blank")}
-        >
+        <Button variant="contained" size="large" onClick={() => window.open(params.row.urlClip, "_blank")}>
           Ver clip
         </Button>
       );
