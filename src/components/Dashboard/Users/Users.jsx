@@ -15,12 +15,15 @@ const columns = [
   { field: "bannedDate", headerName: "Fecha de baneo", width: 400 },
   {
     field: "action",
-    headerName: "Action",
+    headerName: "Acciones",
     width: 400,
     sortable: false,
     renderCell: (params) => {
+      const unbanUser = async (name) =>{
+        await axios.delete("https://api-starwraithgg.herokuapp.com/api/users/unban-user", {name}).then()
+      }
       return (
-        <IconButton color="success" size="large">
+        <IconButton color="success" size="large" onClick={() => unbanUser(params.row.name)}>
           <BlockOutlinedIcon />
         </IconButton>
       );

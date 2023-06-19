@@ -17,7 +17,7 @@ const columns = [
   { field: "uploadDate", headerName: "Fecha Subida", width: 150 },
   {
     field: "action",
-    headerName: "Action",
+    headerName: "Acciones",
     sortable: false,
     renderCell: (params) => {
       return (
