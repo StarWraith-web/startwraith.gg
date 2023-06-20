@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./BrandCarousel.scss";
 import sonyLogo from "../../assets/img/png/sony.png";
 import caseLogo from "../../assets/img/svg/case.svg";

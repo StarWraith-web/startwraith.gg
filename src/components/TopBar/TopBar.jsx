@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createRef, useEffect, useRef, useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { gsap } from "gsap";
