@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { tokens } from "../../../theme/theme";
-import { ComingSoon } from "../../ComingSoon";
 import { Box, Button, useTheme } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
