@@ -190,13 +190,13 @@
   height: 60px;
   font-size: 20px;
   font-family: $time-new-roman;
-  background: linear-gradient(45deg, transparent 5%, #f44336 5%);
+  background: linear-gradient(45deg, transparent 5%, $primary 5%);
   border: 0;
   cursor: pointer;
   color: #fff;
   letter-spacing: 3px;
   line-height: 60px;
-  box-shadow: 6px 0 0 #00e6f6;
+  box-shadow: 6px 0 0 $orange-logo;
   outline: transparent;
   &::after {
     position: relative;
@@ -204,12 +204,12 @@
     height: 60px;
     font-size: 20px;
     font-family: $time-new-roman;
-    background: linear-gradient(45deg, transparent 5%, #f44336 5%);
+    background: linear-gradient(45deg, transparent 5%, $primary 5%);
     border: 0;
     color: #fff;
     letter-spacing: 3px;
     line-height: 60px;
-    box-shadow: 6px 0 0 #00e6f6;
+    box-shadow: 6px 0 0 $orange-logo;
     outline: transparent;
     --slice-0: inset(50% 50% 50% 50%);
     --slice-1: inset(80% -6px 0 0);
@@ -226,11 +226,11 @@
     background: linear-gradient(
       45deg,
       transparent 3%,
-      #00e6f6 3%,
-      #00e6f6 5%,
-      #f44336 5%
+      $orange-logo 3%,
+      $orange-logo 5%,
+      $primary 5%
     );
-    text-shadow: -3px -3px 0 #f8f005, 3px 3px 0 #00e6f6;
+    text-shadow: -3px -3px 0 #f8f005, 3px 3px 0 $orange-logo;
     clip-path: var(--slice-0);
   }
   &:hover {

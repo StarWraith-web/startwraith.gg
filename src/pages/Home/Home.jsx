@@ -20,7 +20,7 @@ export function Home() {
         <div className="video-home">
           <div className="box-border box">
             <div className="container-video">
-              <video controls autoPlay muted loop>
+              <video autoPlay muted loop>
                 <source src={videoCollab} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
@@ -29,9 +29,6 @@ export function Home() {
         </div>
       </div>
       <div className="bottom-section">
-        <div className="social-section">
-          <SocialSection />
-        </div>
         <div className="footer-section">
           <Footer />
         </div>

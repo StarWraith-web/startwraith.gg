@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
 import { ButtonGlitch } from "../Buttons";
 import "./Footer.scss";
+import { SocialSection } from "../SocialSection";
 
 export function Footer() {
   return (
     <footer className="footer">
       <div className="footer__addr">
-        <h1 className="footer__logo">Star Wraith</h1>
-
         <div className="contact">
           <address>
             <div className="button-wrapper-footer">
               <a href="mailto:rjbm90@gmail.com">
-                <ButtonGlitch text="Contactame" type="button" />
+                <ButtonGlitch text="Contacto" type="button" />
               </a>
             </div>
           </address>
@@ -20,21 +19,11 @@ export function Footer() {
       </div>
 
       <ul className="footer__nav">
-        <li className="nav__item">
-          <h2 className="nav__title">Merchan</h2>
-
-          <ul className="nav__ul">
-            <li>
-              <a
-                href="https://www.amazon.es/ref=as_li_ss_tl?ie=UTF8&linkCode=sl2&tag=starwraith-21&linkId=788ac17b4767d5f2f21634fe5f196431&language=es_ES"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Amazon Afiliados
-              </a>
-            </li>
-          </ul>
-        </li>
+        <div className="nav__item">
+          <div className="nav__ul">
+            <SocialSection />
+          </div>
+        </div>
 
         <li className="nav__item">
           <h2 className="nav__title">Legal</h2>

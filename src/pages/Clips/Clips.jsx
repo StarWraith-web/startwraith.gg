@@ -336,7 +336,7 @@ export function Clips() {
                   </p>
                   <div className="box-border box">
                     <div className="container-video">
-                      <video controls autoPlay muted loop>
+                      <video autoPlay muted loop>
                         <source src={videoClips} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>

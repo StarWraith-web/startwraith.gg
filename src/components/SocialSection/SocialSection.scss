@@ -1,9 +1,8 @@
 @import "../../scss/index.scss";
 
 .flex-center {
-  /*  background-color: black; */
-  /* min-height: 50vh; */
   width: 100%;
+  margin: auto;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -16,10 +15,11 @@
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+
 }
 
 .icon-3d {
-  padding: 40px;
+  padding: 20px 40px 30px 30px;
   -webkit-animation: icon3d 200ms 10;
   animation: icon3d 200ms 10;
   color: #fff;
