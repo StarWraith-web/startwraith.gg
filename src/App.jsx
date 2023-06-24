@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { DashboardLayout, MainLayout, ProtectedLayout } from "./layouts";
@@ -35,15 +36,15 @@ function App() {
           <Routes>
             <Route path="/" element={<MainLayout />}>
               <Route index element={<Home />} />
-              <Route path="tiers" element={<Tiers />} />
-              <Route path="eventos" element={<Eventos />} />
-              <Route path="clips" element={<Clips />}>
-                <Route path="upload-clip/:id" element={<Clips />} />
-              </Route>
-              <Route path="liderboard" element={<LiderBoard />} />
+              {/* <Route path="tiers" element={<Tiers />} /> */}
+              {/* <Route path="liderboard" element={<LiderBoard />} /> */}
+              {/* <Route path="eventos" element={<Eventos />} /> */}
               <Route path="politica-privacidad" element={<PrivacyPolicy />} />
               <Route path="cookies" element={<Cookies />} />
               <Route path="login" element={<Login />} />
+              <Route path="clips" element={<Clips />}>
+                <Route path="upload-clip/:id" element={<Clips />} />
+              </Route>
             </Route>
 
             <Route path="/dashboard" element={<ProtectedLayout />}>
