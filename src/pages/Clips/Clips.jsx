@@ -10,6 +10,7 @@ import { TextGlitchRandomized } from "../../components/Animations";
 import { InputText } from "../../components/InputText";
 import { ranks } from "../../assets/data/ranks";
 import videoClips from "../../assets/video/reaccion-clips.mp4";
+import guiaClip from "../../assets/docs/guia-starwraith-clips.pdf";
 import "./Clips.scss";
 
 const importAll = (r) => {
@@ -294,6 +295,24 @@ export function Clips() {
                 <div className="area-help">
                   <div className="area-help__title">
                     <TextGlitchRandomized text="¿Tienes problemas al subir tu clip?" />
+                  </div>
+                  <div className="area-help__content">
+                    <p>
+                      Si tienes problemas al subir tu clip, o simplemente no
+                      entiendes bien como hacerlo, aquí te dejamos una guía en
+                      pdf donde podrás consultar la información que problamente
+                      estes buscando.
+                    </p>
+                  </div>
+                  <div className="area-help__button">
+                    <a
+                      href={guiaClip}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download="guia-starwraith-clips.pdf"
+                    >
+                      <ButtonGlitch text="Descargar Guía" type="button" />
+                    </a>
                   </div>
                 </div>
               </div>
