@@ -72,10 +72,18 @@ export function TopBar() {
   return (
     <div ref={root} className="menu">
       {items.map((item, index) => {
-        console.log(item);
         if (item.name === "Tiers" || item.name === "Liderboard") {
           return (
-            <Badge badgeContent="Cooming Soon" color="primary">
+            <Badge
+              key={item.name}
+              badgeContent="Cooming Soon"
+              color="primary"
+              sx={{
+                "& .MuiBadge-badge": {
+                  fontSize: "10px"
+                },
+              }}
+            >
               <Link
                 style={{ pointerEvents: clickable ? "" : "none" }}
                 key={item.name}

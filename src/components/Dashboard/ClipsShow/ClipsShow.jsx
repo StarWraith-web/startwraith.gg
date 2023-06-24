@@ -9,9 +9,10 @@ import { ContainerLoader } from "../../Animations";
 import { ButtonNext, ButtonPrev } from "../../Buttons";
 import { toast } from "react-toastify";
 import BlockOutlinedIcon from "@mui/icons-material/BlockOutlined";
-import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 
 import "./ClipsShow.scss";
+import { pink } from "@mui/material/colors";
 
 const importAll = (r) => {
   let images = {};
@@ -223,6 +224,7 @@ const Wrapper = (props) => {
 };
 
 const ClipInfo = (props) => {
+  const [favorite, setFavorite] = useState(false);
   const { clips, firstIndex, lastIndex, handleRemoveOnClick } = props;
 
   const handleBanUser = async (name) => {
@@ -236,6 +238,24 @@ const ClipInfo = (props) => {
         toast.success(resp.data.msg);
       })
       .catch((err) => toast.error(err.response.data.msg));
+  };
+
+  const handleFavorite = async (_id) => {
+    console.log(favorite);
+    console.log(_id);
+    await axios
+      .patch("http://localhost:8000/api/clips/add-to-favorite", {
+        _id,
+        favorite,
+      })
+      .then((resp) => {
+        console.log(resp);
+        toast.success(resp.data.msg);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.response.data.msg);
+      });
   };
 
   const items = clips
@@ -278,7 +298,12 @@ const ClipInfo = (props) => {
               <Box p="5px" display="flex" alignItems="center">
                 <p className="text-bold">
                   <b>Banear a usuario:</b>{" "}
-                  <IconButton onClick={() => {handleBanUser(item.author); handleRemoveOnClick(clips, item)}}>
+                  <IconButton
+                    onClick={() => {
+                      handleBanUser(item.author);
+                      handleRemoveOnClick(clips, item);
+                    }}
+                  >
                     <BlockOutlinedIcon />
                   </IconButton>
                 </p>
@@ -286,8 +311,15 @@ const ClipInfo = (props) => {
               <Box p="5px" display="flex" alignItems="center">
                 <p className="text-bold">
                   <b>Añadir a favorito:</b>{" "}
-                  <IconButton>
-                    <FavoriteOutlinedIcon />
+                  <IconButton
+                    onClick={() => {
+                      setFavorite(prev => !prev);
+                      handleFavorite(item._id)
+                    }}
+                  >
+                    <FavoriteOutlinedIcon
+                      sx={favorite || item.favorite ? { color: pink[500] } : {}}
+                    />
                   </IconButton>
                 </p>
               </Box>
