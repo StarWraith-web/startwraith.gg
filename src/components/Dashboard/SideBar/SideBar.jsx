@@ -136,13 +136,13 @@ export function SideBar() {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
+            {/* <Item
               title="Base de datos"
               to="/dashboard/database"
               icon={<StorageOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
             <Typography
               variant="h6"
               color={colors.grey[300]}

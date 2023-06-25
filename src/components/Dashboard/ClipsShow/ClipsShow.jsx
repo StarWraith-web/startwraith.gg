@@ -1,18 +1,19 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
-import { Box, Button, Divider, IconButton, useTheme } from "@mui/material";
 import axios from "axios";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
+import BlockOutlinedIcon from "@mui/icons-material/BlockOutlined";
+import { Box, Button, Divider, IconButton, useTheme } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import { Header } from "../Header";
 import { tokens } from "../../../theme/theme";
 import { useEffect, useState } from "react";
 import { ContainerLoader } from "../../Animations";
 import { ButtonNext, ButtonPrev } from "../../Buttons";
 import { toast } from "react-toastify";
-import BlockOutlinedIcon from "@mui/icons-material/BlockOutlined";
-import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 
 import "./ClipsShow.scss";
-import { pink } from "@mui/material/colors";
+import { BasicModal } from "../../Modals";
 
 const importAll = (r) => {
   let images = {};
@@ -33,6 +34,9 @@ export function ClipsShow() {
   const [clips, setClips] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [clipsPerPage, setClipsPerPage] = useState(1);
+  const [titleModal, setTitleModal] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const [contentModal, setContentModal] = useState(null);
 
   const pageNumbers = clips.length;
   const lastIndex = currentPage * clipsPerPage;
@@ -88,6 +92,18 @@ export function ClipsShow() {
     let newItems = [...itemList];
     newItems.splice(index, 1);
     setClips(newItems);
+  };
+
+  const handleOpenBasicModal = () => {
+    setOpenModal(true);
+    setTitleModal("Listado de Clips");
+    setContentModal(<Clips />);
+  };
+
+  const closeModal = () => {
+    setOpenModal(false);
+    setTitleModal("");
+    setContentModal(null);
   };
 
   return (
@@ -164,7 +180,13 @@ export function ClipsShow() {
               </div>
 
               <div className="button-cliplist">
-                <Button variant="contained" size="large">
+                <Button
+                  variant="contained"
+                  size="large"
+                  onClick={() => {
+                    handleOpenBasicModal();
+                  }}
+                >
                   Listado de clips
                 </Button>
               </div>
@@ -172,6 +194,12 @@ export function ClipsShow() {
           </div>
         </Box>
       </Box>
+      <BasicModal
+        open={openModal}
+        onClose={closeModal}
+        title={titleModal}
+        children={contentModal}
+      />
     </Box>
   );
 }
@@ -225,6 +253,7 @@ const Wrapper = (props) => {
 
 const ClipInfo = (props) => {
   const [favorite, setFavorite] = useState(false);
+
   const { clips, firstIndex, lastIndex, handleRemoveOnClick } = props;
 
   const handleBanUser = async (name) => {
@@ -240,20 +269,22 @@ const ClipInfo = (props) => {
       .catch((err) => toast.error(err.response.data.msg));
   };
 
-  const handleFavorite = async (_id) => {
-    console.log(favorite);
+  const handleFavorite = async (_id, favorite) => {
     console.log(_id);
+    console.log(favorite);
     await axios
-      .patch("http://localhost:8000/api/clips/add-to-favorite", {
-        _id,
-        favorite,
-      })
+      .patch(
+        "https://api-starwraithgg.herokuapp.com/api/clips/add-to-favorite",
+        {
+          _id,
+          favorite,
+        }
+      )
       .then((resp) => {
         console.log(resp);
         toast.success(resp.data.msg);
       })
       .catch((err) => {
-        console.log(err);
         toast.error(err.response.data.msg);
       });
   };
@@ -261,6 +292,7 @@ const ClipInfo = (props) => {
   const items = clips
     .map((item) => {
       let image = `${item.rankKey}.png`;
+
       return (
         <Box p="15px" key={item._id}>
           <h2 style={{ textAlign: "center" }}>{item.title}</h2>
@@ -313,12 +345,16 @@ const ClipInfo = (props) => {
                   <b>Añadir a favorito:</b>{" "}
                   <IconButton
                     onClick={() => {
-                      setFavorite(prev => !prev);
-                      handleFavorite(item._id)
+                      /* setFavorite(!favorite);
+                      if (item.favorite && favorite) {
+                        handleFavorite(item._id, false);
+                      } else {
+                        handleFavorite(item._id, true);
+                      } */
                     }}
                   >
                     <FavoriteOutlinedIcon
-                      sx={favorite || item.favorite ? { color: pink[500] } : {}}
+                      sx={favorite || item.favorite ? { color: "red" } : {}}
                     />
                   </IconButton>
                 </p>
@@ -331,4 +367,69 @@ const ClipInfo = (props) => {
     .slice(firstIndex, lastIndex);
 
   return items;
+};
+
+const Clips = () => {
+  const [loading, setLoading] = useState(false);
+  const [clips, setClips] = useState([]);
+
+  const columns = [
+    { field: "id", headerName: "ID", width: 200 },
+    { field: "author", headerName: "Autor", width: 100 },
+    { field: "title", headerName: "Título Clip", width: 400 },
+    { field: "rank", headerName: "Rango", width: 100 },
+    { field: "urlClip", headerName: "Url", width: 500 },
+    { field: "uploadDate", headerName: "Fecha Subida", width: 150 },
+  ];
+
+  useEffect(() => {
+    const getClips = async () => {
+      setLoading(true);
+      await axios
+        .get("https://api-starwraithgg.herokuapp.com/api/clips/get-clips")
+        .then((resp) => {
+          const { data } = resp;
+          console.log(data);
+          const mapRes = data.map((item) => {
+            return {
+              author: item.author,
+              favorite: item.favorite,
+              rank: item.rank,
+              title: item.title,
+              uploadDate: item.uploadDate,
+              urlClip: item.urlClip,
+              urlType: item.urlType,
+              visualized: item.visualized,
+              id: item._id,
+            };
+          });
+          setClips(mapRes);
+          setLoading(false);
+        })
+        .catch((err) => toast.error(err.response.data.msg));
+    };
+
+    getClips();
+  }, []);
+
+  return (
+    <>
+      {loading ? (
+        <ContainerLoader />
+      ) : (
+        <div>
+          <DataGrid
+            rows={clips}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 10 },
+              },
+            }}
+            pageSizeOptions={[5, 10]}
+          />
+        </div>
+      )}
+    </>
+  );
 };

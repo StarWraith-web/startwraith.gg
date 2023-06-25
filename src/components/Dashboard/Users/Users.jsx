@@ -19,11 +19,22 @@ const columns = [
     width: 400,
     sortable: false,
     renderCell: (params) => {
-      const unbanUser = async (name) =>{
-        await axios.delete("https://api-starwraithgg.herokuapp.com/api/users/unban-user", {name}).then()
-      }
+      const unbanUser = async (_id) => {
+        await axios
+          .post("https://api-starwraithgg.herokuapp.com/api/users/unban-user", {
+            _id,
+          })
+          .then((resp) => {
+            toast.success(resp.data.msg);
+          })
+          .catch((err) => toast.error(err.response.data.msg));
+      };
       return (
-        <IconButton color="success" size="large" onClick={() => unbanUser(params.row.name)}>
+        <IconButton
+          color="success"
+          size="large"
+          onClick={() => unbanUser(params.row.id)}
+        >
           <BlockOutlinedIcon />
         </IconButton>
       );
