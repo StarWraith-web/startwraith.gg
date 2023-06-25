@@ -53,17 +53,17 @@ function App() {
                 <Route path="/dashboard/database" element={<BbDd />} />
                 <Route path="/dashboard/users" element={<Users />} />
                 <Route path="/dashboard/calendario" element={<Calendar />} />
-                <Route path="/dashboard/grafica-barras" element={<Barras />} />
-                <Route path="/dashboard/grafica-lineal" element={<Lineal />} />
-                <Route path="/dashboard/grafica-donut" element={<Donut />} />
                 <Route path="/dashboard/clips" element={<ClipsShow />} />
                 <Route path="/dashboard/clipsview" element={<ClipsViews />} />
                 <Route path="/dashboard/favoritos" element={<Favoritos />} />
                 <Route path="/dashboard/faq" element={<Faq />} />
+                {/* <Route path="/dashboard/grafica-barras" element={<Barras />} />
+                <Route path="/dashboard/grafica-lineal" element={<Lineal />} />
+                <Route path="/dashboard/grafica-donut" element={<Donut />} />
                 <Route
                   path="/dashboard/grafica-geografica"
                   element={<Geografica />}
-                />
+                /> */}
               </Route>
             </Route>
           </Routes>
