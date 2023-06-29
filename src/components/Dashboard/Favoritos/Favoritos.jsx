@@ -45,7 +45,7 @@ export function Favoritos() {
       setLoading(true);
       await axios
         .get(
-          "https://api-starwraithgg.herokuapp.com/api/clips/get-clips-favorites"
+          "https://api-starwraith-85233a238ae2.herokuapp.com/api/clips/get-clips-favorites"
         )
         .then((resp) => {
           const { data } = resp;

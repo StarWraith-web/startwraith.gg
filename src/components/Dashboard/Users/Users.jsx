@@ -21,7 +21,7 @@ const columns = [
     renderCell: (params) => {
       const unbanUser = async (_id) => {
         await axios
-          .post("https://api-starwraithgg.herokuapp.com/api/users/unban-user", {
+          .post("https://api-starwraith-85233a238ae2.herokuapp.com/api/users/unban-user", {
             _id,
           })
           .then((resp) => {
@@ -53,7 +53,7 @@ export function Users() {
     const getClips = async () => {
       setLoading(true);
       await axios
-        .get("https://api-starwraithgg.herokuapp.com/api/users/banned-users")
+        .get("https://api-starwraith-85233a238ae2.herokuapp.com/api/users/banned-users")
         .then((resp) => {
           const { data } = resp;
           const mapRes = data.map((item) => {

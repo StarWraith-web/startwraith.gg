@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
 
       try {
         const { data } = await axios(
-          "https://api-starwraithgg.herokuapp.com/api/users/profile",
+          "https://api-starwraith-85233a238ae2.herokuapp.com/api/users/profile",
           config
         );
         setAuth(data);

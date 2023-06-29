@@ -177,7 +177,7 @@ export function Clips() {
 
     await axios
       .post(
-        "https://api-starwraithgg.herokuapp.com/api/clips/upload-clip",
+        "https://api-starwraith-85233a238ae2.herokuapp.com/api/clips/upload-clip",
         data
       )
       .then((resp) => {

@@ -25,7 +25,7 @@ export function Login() {
 
     try {
       const { data } = await axios.post(
-        "https://api-starwraithgg.herokuapp.com/api/users/login",
+        "https://api-starwraith-85233a238ae2.herokuapp.com/api/users/login",
         {
           email,
           password,

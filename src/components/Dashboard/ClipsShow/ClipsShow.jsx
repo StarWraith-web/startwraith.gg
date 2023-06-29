@@ -62,7 +62,7 @@ export function ClipsShow() {
     const getClips = async () => {
       setLoading(true);
       await axios
-        .get("https://api-starwraithgg.herokuapp.com/api/clips/get-clips")
+        .get("https://api-starwraith-85233a238ae2.herokuapp.com/api/clips/get-clips")
         .then((resp) => {
           const { data } = resp;
           setClips(data);
@@ -76,7 +76,7 @@ export function ClipsShow() {
 
   const handleView = async (_id) => {
     await axios
-      .patch("https://api-starwraithgg.herokuapp.com/api/clips/view-clip", {
+      .patch("https://api-starwraith-85233a238ae2.herokuapp.com/api/clips/view-clip", {
         _id,
       })
       .then((resp) => {
@@ -262,7 +262,7 @@ const ClipInfo = (props) => {
       bannedDate: new Date().toLocaleDateString("en"),
     };
     await axios
-      .post("https://api-starwraithgg.herokuapp.com/api/users/ban-user", data)
+      .post("https://api-starwraith-85233a238ae2.herokuapp.com/api/users/ban-user", data)
       .then((resp) => {
         toast.success(resp.data.msg);
       })
@@ -274,7 +274,7 @@ const ClipInfo = (props) => {
     console.log(favorite);
     await axios
       .patch(
-        "https://api-starwraithgg.herokuapp.com/api/clips/add-to-favorite",
+        "https://api-starwraith-85233a238ae2.herokuapp.com/api/clips/add-to-favorite",
         {
           _id,
           favorite,
@@ -386,7 +386,7 @@ const Clips = () => {
     const getClips = async () => {
       setLoading(true);
       await axios
-        .get("https://api-starwraithgg.herokuapp.com/api/clips/get-clips")
+        .get("https://api-starwraith-85233a238ae2.herokuapp.com/api/clips/get-clips")
         .then((resp) => {
           const { data } = resp;
           console.log(data);

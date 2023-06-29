@@ -41,7 +41,7 @@ export function ClipsViews() {
       setLoading(true);
       await axios
         .get(
-          "https://api-starwraithgg.herokuapp.com/api/clips/get-clips-visualized"
+          "https://api-starwraith-85233a238ae2.herokuapp.com/api/clips/get-clips-visualized"
         )
         .then((resp) => {
           const { data } = resp;
