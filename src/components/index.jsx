@@ -6,3 +6,4 @@ export * from "./ComingSoon";
 export * from "./AboutMe";
 export * from "./BrandCarousel";
 export * from "./Dashboard"
+export * from "./Social"

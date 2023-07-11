@@ -1,8 +1,403 @@
-@import "../../scss/index.scss";
+.home {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 
-.main-content {
-  min-height: 100vh;
-  height: 100%;
+  a{
+    text-decoration: none;
+    color: rgba(185, 186, 191, 1);
+  }
+
+  .container-brands {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 1240px;
+    height: 100px;
+  }
+
+  .overlap-group-wrapper {
+    background-color: #ffffff;
+    border: 1px none;
+    height: 2496px;
+    overflow-x: hidden;
+    width: 1920px;
+  }
+
+  .text-name {
+    color: rgba(252, 252, 253, 1);
+    font-family: "Rajdhani", Helvetica;
+    font-size: 64px;
+    font-weight: 700;
+    left: 577px;
+    letter-spacing: 0;
+    line-height: 77px;
+    position: absolute;
+    text-align: center;
+    top: 720px;
+    white-space: nowrap;
+    width: 765px;
+  }
+
+  .rectangle-bottom {
+    background: linear-gradient(360deg, #0f1922 10%, rgba(15, 25, 34, 0) 100%);
+    height: 360px;
+    left: 0;
+    position: absolute;
+    top: 1223px;
+    transform: rotate(-180deg);
+    width: 100%;
+  }
+
+  .rectangle-middle {
+    background: linear-gradient(180deg, #0f1922 0%, rgba(15, 25, 34, 0) 100%);
+    height: 360px;
+    left: 0;
+    position: absolute;
+    top: 750px;
+    transform: rotate(180deg);
+    width: 100%;
+  }
+
+  .rectangle-top {
+    background-color: #0f1922;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  .description {
+    color: rgba(185, 186, 191, 1);
+    font-family: "Oxanium", Helvetica;
+    font-size: 18px;
+    font-weight: 500;
+    left: 500px;
+    letter-spacing: 0;
+    line-height: 31px;
+    opacity: 0.8;
+    position: absolute;
+    text-align: center;
+    top: 866px;
+    width: 918px;
+  }
+
+  .starwraith {
+    color: #ff4655;
+    font-family: "Rajdhani", Helvetica;
+    font-size: 37px;
+    font-weight: 600;
+    left: 405px;
+    letter-spacing: 0;
+    line-height: 77px;
+    position: absolute;
+    top: 22px;
+    white-space: nowrap;
+    width: 210px;
+  }
+
+  .overlap-group {
+    height: 2496px;
+    position: relative;
+  }
+
+  .background-top {
+    height: 1080px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 1920px;
+  }
+
+  .background-bottom {
+    height: 1080px;
+    left: 0;
+    mix-blend-mode: multiply;
+    object-fit: cover;
+    position: absolute;
+    top: 1261px;
+    width: 1920px;
+  }
+
+  .div {
+    height: 551px;
+    left: 0;
+    position: absolute;
+    top: 546px;
+    width: 1920px;
+  }
+
+  .subtitle {
+    color: #ff4655;
+    font-family: "Rajdhani", Helvetica;
+    font-size: 28px;
+    font-weight: 600;
+    left: 488px;
+    letter-spacing: 0;
+    line-height: 77px;
+    position: absolute;
+    text-align: center;
+    top: 777px;
+    white-space: nowrap;
+    width: 943px;
+  }
+
+  .span {
+    color: #b9babf;
+    font-family: "Oxanium", Helvetica;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 31px;
+  }
+
+  .div-wrapper {
+    background-color: transparent;
+    align-items: center;
+    border: 1px solid;
+    border-color: rgba(252, 252, 253, 1);
+    border-radius: 12px;
+    display: flex;
+    gap: 10px;
+    height: 60px;
+    justify-content: center;
+    padding: 10px;
+    position: relative;
+    width: 164px;
+  }
+
+  .container-video {
+    height: 527px;
+    left: 473px;
+    object-fit: cover;
+    position: absolute;
+    top: 1658px;
+    width: 972px;
+
+    video{
+      width: 100%;
+      border-radius: 15px;
+    }
+  }
+
+  .bxl-instagram {
+    height: 24px;
+    left: 915px;
+    position: absolute;
+    top: 2271px;
+    width: 24px;
+  }
+
+  .bxl-twitch {
+    height: 24px;
+    left: 970px;
+    position: absolute;
+    top: 2271px;
+    width: 24px;
+  }
+
+  .bxl-tiktok {
+    height: 24px;
+    left: 1024px;
+    position: absolute;
+    top: 2271px;
+    width: 24px;
+  }
+
+  .button {
+    border: none;
+    align-items: center;
+    background-color: rgba(247, 56, 89, 1);
+    border-radius: 12px;
+    display: flex;
+    gap: 12px;
+    height: 60px;
+    justify-content: center;
+    padding: 10px;
+    position: relative;
+    width: 164px;
+  }
+
+  .group {
+    height: 16px;
+    min-width: 16px;
+    position: relative;
+  }
+
+  .bxl-discord {
+    height: 24px;
+    left: 860px;
+    position: absolute;
+    top: 2272px;
+    width: 24px;
+  }
+
+  .bxl-twitter {
+    height: 20px;
+    left: 1080px;
+    position: absolute;
+    top: 2275px;
+    width: 23px;
+  }
+
+  .bxl-youtube {
+    height: 17px;
+    left: 806px;
+    position: absolute;
+    top: 2274px;
+    width: 20px;
+  }
+
+  .CTA {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    left: 787px;
+    position: absolute;
+    top: 1502px;
+    width: fit-content;
+  }
+
+  .text-wrapper-3 {
+    color: var(--textbody-text);
+    font-family: "Oxanium-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 359px;
+    letter-spacing: 0;
+    line-height: 27px;
+    position: absolute;
+    top: 2411px;
+    white-space: nowrap;
+  }
 }
 
+.home .image {
+  height: 1105px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1920px;
+}
 
+.home .text-wrapper-2 {
+  text-decoration: underline;
+}
+
+.home .p {
+  color: rgba(185, 186, 191, 1);
+  font-family: "Oxanium", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  left: 822px;
+  letter-spacing: 0;
+  line-height: 27px;
+  position: absolute;
+  top: 2411px;
+  white-space: nowrap;
+}
+
+.home .text-wrapper-4 {
+  color: rgba(185, 186, 191, 1);
+  font-family: "Oxanium", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  left: 1422px;
+  letter-spacing: 0;
+  line-height: 27px;
+  position: absolute;
+  text-align: right;
+  top: 2411px;
+  white-space: nowrap;
+}
+
+.home .line-stroke {
+  height: 2px;
+  left: 359px;
+  position: absolute;
+  top: 2385px;
+  width: 1200px;
+}
+
+.home .text-wrapper-5 {
+  color: rgba(252, 252, 253, 1);
+  font-family: "Oxanium", Helvetica;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 18px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.home .text-wrapper-6 {
+  color: rgba(252, 252, 253, 1);
+  font-family: "Oxanium", Helvetica;
+  font-size: 16px;
+  font-weight: 600;
+  left: 975px;
+  letter-spacing: 0;
+  line-height: 22px;
+  position: absolute;
+  top: 46px;
+  white-space: nowrap;
+}
+
+.home .text-wrapper-7 {
+  color: #b9babf;
+  font-family: "Oxanium", Helvetica;
+  font-size: 16px;
+  font-weight: 600;
+  left: 1084px;
+  letter-spacing: 0;
+  line-height: 22px;
+  position: absolute;
+  top: 46px;
+  white-space: nowrap;
+}
+
+.home .text-wrapper-8 {
+  color: #b9babf;
+  font-family: "Oxanium", Helvetica;
+  font-size: 16px;
+  font-weight: 600;
+  left: 1186px;
+  letter-spacing: 0;
+  line-height: 22px;
+  position: absolute;
+  top: 46px;
+  white-space: nowrap;
+}
+
+.home .text-wrapper-9 {
+  color: rgba(185, 186, 191, 1);
+  font-family: "Oxanium", Helvetica;
+  font-size: 16px;
+  font-weight: 600;
+  left: 1287px;
+  letter-spacing: 0;
+  line-height: 22px;
+  position: absolute;
+  top: 46px;
+  white-space: nowrap;
+}
+
+.home .text-wrapper-10 {
+  color: #b9babf;
+  font-family: "Oxanium", Helvetica;
+  font-size: 16px;
+  font-weight: 600;
+  left: 1433px;
+  letter-spacing: 0;
+  line-height: 22px;
+  position: absolute;
+  top: 46px;
+  white-space: nowrap;
+}

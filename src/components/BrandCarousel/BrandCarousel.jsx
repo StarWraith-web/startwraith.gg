@@ -19,7 +19,7 @@ export function BrandCarousel() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={sonyLogo} alt="" />
+          <img src={caseLogo} alt="" />
         </a>
         <a
           href="https://www.sony.es/electronics/hardware-juegos-inzone"
@@ -33,7 +33,7 @@ export function BrandCarousel() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={sonyLogo} alt="" />
+          <img src={caseLogo} alt="" />
         </a>
         <a
           href="https://www.sony.es/electronics/hardware-juegos-inzone"
@@ -47,7 +47,7 @@ export function BrandCarousel() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={sonyLogo} alt="" />
+          <img src={caseLogo} alt="" />
         </a>
       </div>
       <div className="logos-slide">
@@ -63,7 +63,7 @@ export function BrandCarousel() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={sonyLogo} alt="" />
+          <img src={caseLogo} alt="" />
         </a>
         <a
           href="https://www.sony.es/electronics/hardware-juegos-inzone"
@@ -77,7 +77,7 @@ export function BrandCarousel() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={sonyLogo} alt="" />
+          <img src={caseLogo} alt="" />
         </a>
         <a
           href="https://www.sony.es/electronics/hardware-juegos-inzone"
@@ -87,11 +87,11 @@ export function BrandCarousel() {
           <img src={sonyLogo} alt="" />
         </a>
         <a
-          href="https://www.sony.es/electronics/hardware-juegos-inzone"
+          href="https://www.caseesports.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={sonyLogo} alt="" />
+          <img src={caseLogo} alt="" />
         </a>
       </div>
     </div>
